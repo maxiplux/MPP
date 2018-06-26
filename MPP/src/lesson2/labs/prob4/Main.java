@@ -6,13 +6,13 @@ import java.util.*;
  *  diagram suggests
  */
 public class Main {	
-	Student bob = new Student();
-	Student tim = new Student();
-	Student allen = new Student();
+	Student bob = TranscriptEntry.createStudent("Bob");
+	Student tim = TranscriptEntry.createStudent("Tim");
+	Student allen = TranscriptEntry.createStudent("Allen");
 	Student[] students = {bob, tim, allen};
-	Section bio1 = new Section();
-	Section bio2 = new Section();
-	Section math = new Section();
+	Section bio1 = TranscriptEntry.createSection(1, "Biology");
+	Section bio2 = TranscriptEntry.createSection(2, "Biology");
+	Section math = TranscriptEntry.createSection(3, "Math");
 	public static void main(String[] args) { 
 		Main m = new Main();
 		m.readDataFromDb();
@@ -56,42 +56,48 @@ public class Main {
 		return studentNames;
 	}
 	private void readDataFromDb() {
-		bob.name = "Bob";
-		tim.name = "Tim";
-		allen.name = "Allen";
-		bio1.sectionNumber = 1;
-		bio2.sectionNumber = 2;
-		math.sectionNumber = 3;
-		bio1.courseName = "Biology";
-		bio2.courseName = "Biology";
-		math.courseName = "Mathematics";
+//		bob.name = "Bob";
+//		tim.name = "Tim";
+//		allen.name = "Allen";
+//		bio1.sectionNumber = 1;
+//		bio2.sectionNumber = 2;
+//		math.sectionNumber = 3;
+//		bio1.courseName = "Biology";
+//		bio2.courseName = "Biology";
+//		math.courseName = "Mathematics";
 		
 		TranscriptEntry[] entries =
 			{new TranscriptEntry(), new TranscriptEntry(), new TranscriptEntry(),
 				new TranscriptEntry(), new TranscriptEntry(), new TranscriptEntry()};
-		entries[0].student = bob;
-		entries[0].section = bio1;
-		entries[0].grade = "A";
+//		entries[0].student = bob;
+//		entries[0].section = bio1;
+//		entries[0].grade = "A";
+		entries[0].newTranscriptEntry(bob, bio1, "A");
 		
-		entries[1].student = bob;
-		entries[1].section = math;
-		entries[1].grade = "B";
+//		entries[1].student = bob;
+//		entries[1].section = math;
+//		entries[1].grade = "B";
+		entries[1].newTranscriptEntry(bob, math, "B");
 		
-		entries[2].student = tim;
-		entries[2].section = bio1;
-		entries[2].grade = "B+";
+//		entries[2].student = tim;
+//		entries[2].section = bio1;
+//		entries[2].grade = "B+";
+		entries[2].newTranscriptEntry(tim, bio1, "B+");
 		
-		entries[3].student = tim;
-		entries[3].section = math;
-		entries[3].grade = "A-";
+//		entries[3].student = tim;
+//		entries[3].section = math;
+//		entries[3].grade = "A-";
+		entries[3].newTranscriptEntry(tim, math, "A-");
 		
-		entries[4].student = allen;
-		entries[4].section = math;
-		entries[4].grade = "B";
+//		entries[4].student = allen;
+//		entries[4].section = math;
+//		entries[4].grade = "B";
+		entries[4].newTranscriptEntry(allen, math, "B");
 		
-		entries[5].student = allen;
-		entries[5].section = bio2;
-		entries[5].grade = "B+";
+//		entries[5].student = allen;
+//		entries[5].section = bio2;
+//		entries[5].grade = "B+";
+		entries[5].newTranscriptEntry(allen, bio2, "B+");
 
 		//insert entries into sections
 		List<TranscriptEntry> gradesForBio1 = new ArrayList<>();
@@ -128,3 +134,16 @@ public class Main {
 	}
 
 }
+
+/* OUTPUT
+Transcript for Bob: 
+
+ Section Number    Course Name          Grade
+     1               Biology             A
+     3               Mathematics         B
+
+Grades for math section:
+ [B, A-, B]
+Courses that Tim took: [Biology, Mathematics]
+Students who got A's: [Bob]
+*/
