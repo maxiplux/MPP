@@ -1,19 +1,25 @@
 package lesson2.labs.prob4;
+
 import java.util.*;
 
-/** Shows how the design in this package of classes
- *  allows you to navigate in the way that the class
- *  diagram suggests
+/**
+ * Shows how the design in this package of classes allows you to navigate in the
+ * way that the class diagram suggests
  */
-public class Main {	
-	Student bob = TranscriptEntry.createStudent("Bob");
-	Student tim = TranscriptEntry.createStudent("Tim");
-	Student allen = TranscriptEntry.createStudent("Allen");
-	Student[] students = {bob, tim, allen};
-	Section bio1 = TranscriptEntry.createSection(1, "Biology");
-	Section bio2 = TranscriptEntry.createSection(2, "Biology");
-	Section math = TranscriptEntry.createSection(3, "Math");
-	public static void main(String[] args) { 
+public class Main {
+	StudentSectionFactory ssf = new StudentSectionFactory();
+
+	Student bob = ssf.createStudent("1", "Bob");
+	Student tim = ssf.createStudent("2", "Tim");
+	Student allen = ssf.createStudent("3", "Allen");
+
+	Student[] students = { bob, tim, allen };
+
+	Section bio1 = ssf.createSection(1, "Biology");
+	Section bio2 = ssf.createSection(2, "Biology");
+	Section math = ssf.createSection(3, "Math");
+
+	public static void main(String[] args) {
 		Main m = new Main();
 		m.readDataFromDb();
 		System.out.println(m.getTranscript(m.bob));
@@ -21,32 +27,35 @@ public class Main {
 		System.out.println("Courses that Tim took: " + m.getCourseNames(m.tim));
 		System.out.println("Students who got A's: " + m.getStudentsWith("A"));
 	}
-	
+
 	private Transcript getTranscript(Student s) {
 		return s.getTranscript();
 	}
+
 	private List<String> getCourseNames(Student s) {
 		List<TranscriptEntry> all = s.grades;
 		List<String> courseNames = new ArrayList<>();
-		for(TranscriptEntry te : all) {
+		for (TranscriptEntry te : all) {
 			courseNames.add(te.section.courseName);
 		}
 		return courseNames;
 	}
+
 	private List<String> getGrades(Section s) {
-		List<String> grades  = new ArrayList<>();
-		for(TranscriptEntry t : s.gradeSheet) {
+		List<String> grades = new ArrayList<>();
+		for (TranscriptEntry t : s.gradeSheet) {
 			grades.add(t.grade);
 		}
 		return grades;
 	}
+
 	private List<String> getStudentsWith(String grade) {
 		List<String> studentNames = new ArrayList<>();
-		for(Student s : students) {
+		for (Student s : students) {
 			boolean found = false;
-			for(TranscriptEntry te : s.grades) {
-				if(!found) {
-					if(te.grade.equals(grade)) {
+			for (TranscriptEntry te : s.grades) {
+				if (!found) {
+					if (te.grade.equals(grade)) {
 						found = true;
 						studentNames.add(s.name);
 					}
@@ -55,95 +64,25 @@ public class Main {
 		}
 		return studentNames;
 	}
-	private void readDataFromDb() {
-//		bob.name = "Bob";
-//		tim.name = "Tim";
-//		allen.name = "Allen";
-//		bio1.sectionNumber = 1;
-//		bio2.sectionNumber = 2;
-//		math.sectionNumber = 3;
-//		bio1.courseName = "Biology";
-//		bio2.courseName = "Biology";
-//		math.courseName = "Mathematics";
-		
-		TranscriptEntry[] entries =
-			{new TranscriptEntry(), new TranscriptEntry(), new TranscriptEntry(),
-				new TranscriptEntry(), new TranscriptEntry(), new TranscriptEntry()};
-//		entries[0].student = bob;
-//		entries[0].section = bio1;
-//		entries[0].grade = "A";
-		entries[0].newTranscriptEntry(bob, bio1, "A");
-		
-//		entries[1].student = bob;
-//		entries[1].section = math;
-//		entries[1].grade = "B";
-		entries[1].newTranscriptEntry(bob, math, "B");
-		
-//		entries[2].student = tim;
-//		entries[2].section = bio1;
-//		entries[2].grade = "B+";
-		entries[2].newTranscriptEntry(tim, bio1, "B+");
-		
-//		entries[3].student = tim;
-//		entries[3].section = math;
-//		entries[3].grade = "A-";
-		entries[3].newTranscriptEntry(tim, math, "A-");
-		
-//		entries[4].student = allen;
-//		entries[4].section = math;
-//		entries[4].grade = "B";
-		entries[4].newTranscriptEntry(allen, math, "B");
-		
-//		entries[5].student = allen;
-//		entries[5].section = bio2;
-//		entries[5].grade = "B+";
-		entries[5].newTranscriptEntry(allen, bio2, "B+");
 
-		//insert entries into sections
-		List<TranscriptEntry> gradesForBio1 = new ArrayList<>();
-		gradesForBio1.add(entries[0]);
-		gradesForBio1.add(entries[2]);
-		bio1.gradeSheet = gradesForBio1;
-		
-		List<TranscriptEntry> gradesForBio2 = new ArrayList<>();
-		gradesForBio2.add(entries[5]);
-		bio2.gradeSheet = gradesForBio2;
-		
-		List<TranscriptEntry> gradesForMath = new ArrayList<>();
-		gradesForMath.add(entries[1]);
-		gradesForMath.add(entries[3]);
-		gradesForMath.add(entries[4]);
-		math.gradeSheet = gradesForMath;
-		
-		//insert entries into students
-		List<TranscriptEntry> gradesForBob = new ArrayList<>();
-		gradesForBob.add(entries[0]);
-		gradesForBob.add(entries[1]);
-		bob.grades = gradesForBob;
-		
-		List<TranscriptEntry> gradesForTim = new ArrayList<>();
-		gradesForTim.add(entries[2]);
-		gradesForTim.add(entries[3]);
-		tim.grades = gradesForTim;
-		
-		List<TranscriptEntry> gradesForAllen = new ArrayList<>();
-		gradesForAllen.add(entries[4]);
-		gradesForAllen.add(entries[5]);
-		allen.grades = gradesForAllen;
+	private void readDataFromDb() {
+
+		ssf.newTranscriptEntry(bob, bio1, "A");
+		ssf.newTranscriptEntry(bob, math, "B");
+		ssf.newTranscriptEntry(tim, bio1, "B+");
+		ssf.newTranscriptEntry(tim, math, "A-");
+		ssf.newTranscriptEntry(allen, math, "B");
+		ssf.newTranscriptEntry(allen, bio2, "B+");
 
 	}
 
 }
 
-/* OUTPUT
-Transcript for Bob: 
-
- Section Number    Course Name          Grade
-     1               Biology             A
-     3               Mathematics         B
-
-Grades for math section:
- [B, A-, B]
-Courses that Tim took: [Biology, Mathematics]
-Students who got A's: [Bob]
-*/
+/*
+ * OUTPUT Transcript for Bob:
+ * 
+ * Section Number Course Name Grade 1 Biology A 3 Mathematics B
+ * 
+ * Grades for math section: [B, A-, B] Courses that Tim took: [Biology,
+ * Mathematics] Students who got A's: [Bob]
+ */
