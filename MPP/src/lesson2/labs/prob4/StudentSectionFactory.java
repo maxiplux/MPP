@@ -25,7 +25,7 @@ public class StudentSectionFactory {
 	public void newTranscriptEntry(Student s, Section sect, String grade)
 	{
 		if(s == null || sect == null)
-			throw new IllegalArgumentException("Customer name cannot be null");
+			throw new IllegalArgumentException("Student or Section cannot be null");
 		
 		TranscriptEntry te = new TranscriptEntry();
 		te.student = s;
