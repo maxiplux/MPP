@@ -1,17 +1,21 @@
 package lesson3.labs.prob3.A;
 
-public class Circle  extends Cylinder{
+public class Circle{
 
+	private Cylinder cyl;
+	
 	public Circle(double radius) {
-		super(radius, 0);
-		
+		cyl = new Cylinder(radius, 0);
+	}
+	
+	public double getRadius()
+	{
+		return this.cyl.getRadius();
 	}
 	
 	public double computeArea()
 	{
 		return Math.PI*this.getRadius()*this.getRadius() ;
 	}
-	
-
 	
 }
