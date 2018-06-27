@@ -9,7 +9,7 @@ public class TestClass {
 		
 		
 		Cylinder cilinder = new Cylinder(3.959,100);		
-		System.out.printf("We have a Cilinder (%s) with Area : %s \n",cilinder, cilinder.computeArea());
+		System.out.printf("We have a Cilinder (%s) with Volume : %s \n",cilinder, cilinder.computeVolume());
 		
 	}
 }

@@ -1,29 +1,19 @@
 package lesson3.labs.prob3.A;
 
-public class Circle{
+public class Circle extends Cylinder {
 
-	private Cylinder cyl;
-	
 	public Circle(double radius) {
-		cyl = new Cylinder(radius, 0);
+		super(radius, 0);
+
 	}
-	
-	public double getRadius()
-	{
-		return this.cyl.getRadius();
+
+	public double computeArea() {
+		return Math.PI * this.getRadius() * this.getRadius();
 	}
-	
-	
+
 	@Override
-	public String toString() 
-	{
-		return String.format("Circle Id(%s) with Area (%s)" , this.hashCode(),this.computeArea()) ;
+	public String toString() {
+		return String.format("Circle Id(%s) with Area (%s)", this.hashCode(), this.computeArea());
 	}
 
-
-	public double computeArea()
-	{
-		return Math.PI*this.getRadius()*this.getRadius() ;
-	}
-	
 }

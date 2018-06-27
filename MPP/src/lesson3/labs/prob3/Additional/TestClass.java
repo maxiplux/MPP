@@ -1,4 +1,4 @@
-package lesson3.labs.prob3.A;
+package lesson3.labs.prob3.Additional;
 
 public class TestClass {
 
