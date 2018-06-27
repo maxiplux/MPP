@@ -1,5 +1,7 @@
 package lesson3.labs.prob1;
 
+
+
 public class PersonWithJob  {
 	
 	private double salary;
@@ -15,21 +17,28 @@ public class PersonWithJob  {
 	
 	@Override
 	public boolean equals(Object aPerson) {
-		if(aPerson == null) {
+		
+		if(aPerson == null) 
+		{
 			return false;
 		}
-		if(getClass() != aPerson.getClass()) {
-			return false;
+		if(getClass() != aPerson.getClass()) 
+		{
+			 
+			return this.person.equals(aPerson);
+			
+			
 		}
 		
 		PersonWithJob p = (PersonWithJob) aPerson;		
-		return super.equals(p.person) && this.getSalary()==p.getSalary();
+		return this.person.equals(p.person) && this.getSalary()==p.getSalary();
 	}
 	public static void main(String[] args) {
 		PersonWithJob p1 = new PersonWithJob("Joe", 30000);
 		
 		Person p2 = new Person("Joe");
 		//As PersonsWithJobs, p1 should be equal to p2
+		
 		System.out.println("p1.equals(p2)? " + p1.equals(p2));
 		System.out.println("p2.equals(p1)? " + p2.equals(p1));
 		
