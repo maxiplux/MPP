@@ -4,6 +4,11 @@ public class Cylinder {
 	private  double radius;
 	private  double height;
 	
+	
+	@Override
+	public String toString() {
+		return String.format("Cylinder radius(%s)/height(%s) ", this.radius,this.height) ;
+	}
 	public double getRadius() {
 		return radius;
 	}
