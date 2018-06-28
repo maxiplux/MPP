@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Building {
+	private String name;
 	private double matainenceCost;
 	private List<Apartment> apts;
 	private Landlord ld;
 
-	public Building(double matainenceCost,Landlord ld) {
+	public Building(double matainenceCost,Landlord ld,String name) {
+		
 		if(ld==null) 
 			throw  new IllegalArgumentException(" landlord should not be null");
+		this.name=name;
 		this.matainenceCost = matainenceCost;
 		this.ld=ld;
 		ld.getBdList().add(this);
