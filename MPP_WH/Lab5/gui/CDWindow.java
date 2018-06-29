@@ -17,6 +17,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import rulesets.RuleException;
+import rulesets.RuleSetFactory;
+
 
 public class CDWindow extends JFrame {
 	private JPanel topPanel;
@@ -115,7 +118,14 @@ public class CDWindow extends JFrame {
 	}
 	class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent evt){
-			JOptionPane.showMessageDialog(CDWindow.this, "Still need to check CD rules!");
+			String s="Still need to check CD rules!";
+			try {
+				RuleSetFactory.getRuleSet(CDWindow.this).applyRules(CDWindow.this);
+			} catch (RuleException e) {
+				// TODO Auto-generated catch block
+				s=e.getMessage();
+			};
+			JOptionPane.showMessageDialog(CDWindow.this, s);//"Still need to check CD rules!");
 		}
 	}
 	class BackListener implements ActionListener {

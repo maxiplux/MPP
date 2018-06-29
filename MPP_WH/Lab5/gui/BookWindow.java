@@ -17,6 +17,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import rulesets.RuleException;
+import rulesets.RuleSetFactory;
+
 
 public class BookWindow extends JFrame {
 	private JPanel topPanel;
@@ -116,7 +119,14 @@ public class BookWindow extends JFrame {
 	}
 	class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent evt){
-			JOptionPane.showMessageDialog(BookWindow.this, "Still need to check book rules!");
+			String s="Still need to check book rules!";
+			try {
+				RuleSetFactory.getRuleSet(BookWindow.this).applyRules(BookWindow.this);
+			} catch (RuleException e) {
+				// TODO Auto-generated catch block
+				s=e.getMessage();
+			};
+			JOptionPane.showMessageDialog(BookWindow.this,s );
 		}
 	}
 	class BackListener implements ActionListener {
