@@ -15,6 +15,7 @@ public abstract class    Employee {
 		LocalDate now = LocalDate.now();
 		System.out.println(calcCompesation(now.getMonthValue(), now.getYear()));
 	}
+	
 	public Paycheck calcCompesation(int month, int year) 
 	{
 		double grossPay = calcGrossPay(month, year);
