@@ -8,8 +8,9 @@ public class CustOrderFactory {
 	{
 		if(o == null)
 			throw new NullPointerException("Null Order");
-		o.addItem(name);
-		return new Item(name);
+		Item i = new Item(name);
+		o.addItem(i);
+		return i;
 	}
 	
 	public static Order newOrder(Customer cus, LocalDate date)

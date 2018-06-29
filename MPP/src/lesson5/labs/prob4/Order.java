@@ -22,8 +22,8 @@ public class Order {
 //		return ord;
 //	}
 
-	void addItem(String name) {
-		items.add(new Item(name));
+	void addItem(Item item) {
+		items.add(item);
 	}
 
 	@Override

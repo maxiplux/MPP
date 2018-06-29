@@ -13,7 +13,7 @@ public class Customer {
 		orders = new ArrayList<Order>();
 	}
 
-	public void addOrder(Order order) {
+	void addOrder(Order order) {
 		orders.add(order);
 	}
 
