@@ -140,15 +140,15 @@ public class BookWindow extends JFrame {
 	}
 
 	public String getIsbnValue() {
-		return isbnField.getText();
+		return isbnField.getText().trim();
 	}
 
 	public String getTitleValue() {
-		return titleField.getText();
+		return titleField.getText().trim();
 	}
 
 	public String getPriceValue() {
-		return priceField.getText();
+		return priceField.getText().trim();
 	}
 
 	public static void main(String[] args) {
