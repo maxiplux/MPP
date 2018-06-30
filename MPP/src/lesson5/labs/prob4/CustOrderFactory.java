@@ -16,7 +16,7 @@ public class CustOrderFactory {
 	public static Order newOrder(Customer cus, LocalDate date)
 	{
 		if(cus == null)
-			throw new NullPointerException("Null Order");
+			throw new NullPointerException("Null Customer");
 		Order order = new Order(date);
 		cus.addOrder(order);
 		return order;
