@@ -29,7 +29,7 @@ public class AddressForm extends Application {
 		grid.setHgap(10);
 		grid.setVgap(10);
 		grid.setPadding(new Insets(25, 25, 25, 25));
-		// grid.setGridLinesVisible(true);
+//		 grid.setGridLinesVisible(true);
 
 		ColumnConstraints col = new ColumnConstraints();
 		col.setPercentWidth(10);
@@ -48,7 +48,7 @@ public class AddressForm extends Application {
 		TextField streetField = new TextField();
 		grid.add(streetField, 2, 1, 2, 1);
 
-		// Street
+		// City
 		Label cityLabel = new Label("City: ");
 		grid.add(cityLabel, 4, 0, 2, 1);
 
