@@ -24,8 +24,6 @@ public class ViewFx extends Application {
 	private Button btnReverseLetters;
 	private Button btnRemoveDuplicates;
 	private Scene scene;
-	int columnIndex;
-	int rowIndex;
 
 	public static final int DEFAULT_WIDTH = 400;
 	public static final int DEFAULT_HEIGHT = 275;
@@ -39,8 +37,6 @@ public class ViewFx extends Application {
 		// TODO Auto-generated method stub
 
 		primaryStage.setTitle("String utility");
-		this.columnIndex = 0;
-		this.rowIndex = 0;
 
 		this.grid = gridSetUp(10, 20, 20);
 
