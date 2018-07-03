@@ -21,6 +21,7 @@ import model.domain.CheckoutRecordEntry;
 import model.domain.LibraryMember;
 import model.domain.User;
 import util.Util;
+import view.MainWindow;
 
 public class CheckoutController extends Application {
 	private User user;
@@ -44,9 +45,9 @@ public class CheckoutController extends Application {
 
 		Button btnBack = (Button) root.lookup("#btnBack");
 		btnBack.setOnAction((event) -> {
-			MainController maincontroller = new MainController(user);
+			MainWindow mainWindow = new MainWindow(user);
 			try {
-				maincontroller.start(this.primaryStage);
+				mainWindow.start(this.primaryStage);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
