@@ -23,7 +23,7 @@ import model.domain.LibraryMember;
 import model.domain.User;
 import util.Util;
 
-public class CheckoutController {
+public class CheckoutController_Wh {
 
 //	@FXML
 //	private TextField userId;
