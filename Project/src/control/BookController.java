@@ -14,10 +14,10 @@ public class BookController extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("calculator2.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/templates/book-list.fxml"));
         
         stage.setTitle("FXML Welcome");
-        stage.setScene(new Scene(root, 300, 275));
+        stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
     
