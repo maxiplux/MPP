@@ -24,6 +24,11 @@ final public class User implements Serializable {
 	public String getPassword() {
 		return password;
 	}
+	public boolean authenticate(String id , String Password) {
+		return this.id.equals(id) &&  this.password.equals(password);
+				
+	}
+	
 	public Auth getAuthorization() {
 		return authorization;
 	}
