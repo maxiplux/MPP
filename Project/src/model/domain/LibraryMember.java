@@ -22,10 +22,11 @@ final public class LibraryMember extends Person implements Serializable {
 		return checkoutRecordEntries;
 	}
 	
-	public void addCheckoutRecordEntry(BookCopy bookcopy, LocalDate checkoutDate, LocalDate dueDate)
+	public CheckoutRecordEntry addCheckoutRecordEntry(BookCopy bookcopy, LocalDate checkoutDate, LocalDate dueDate)
 	{
 		CheckoutRecordEntry cre = new CheckoutRecordEntry(bookcopy, checkoutDate, dueDate);
 		this.checkoutRecordEntries.add(cre);
+		return cre;
 	}
 
 	@Override
