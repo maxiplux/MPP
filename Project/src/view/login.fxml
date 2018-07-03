@@ -10,7 +10,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="302.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="302.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="control.Main"
+>
    <children>
       <GridPane layoutX="38.0" layoutY="13.0" prefHeight="140.0" prefWidth="227.0">
         <columnConstraints>
@@ -35,7 +37,7 @@
                   <PasswordField id="Password" fx:id="txtPassword" />
                </children>
             </VBox>
-            <Button id="doLogin" fx:id="btnLogin" mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button id="btnLogin" fx:id="btnLogin" mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>
