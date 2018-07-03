@@ -37,7 +37,7 @@ public class MainController extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/view/templates/main.fxml"));
         
-        stage.setTitle("FXML Welcome");
+        stage.setTitle("FXML");
         stage.setScene(new Scene(root, 600, 275));
         
         
@@ -56,8 +56,6 @@ public class MainController extends Application {
 		btnLibraryMembers.setOnAction((event) -> {
 		 System.out.println("btnLibraryMembers");
 		});
-		
-		
 		
         stage.show();
     }
