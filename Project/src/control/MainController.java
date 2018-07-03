@@ -1,24 +1,40 @@
 package control;
 
+
+
  
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.domain.User;
 
-import javafx.scene.control.Button;
-
-public class MainController  {
+public class MainController extends Application {
     private User user;
     
-	@FXML
-	private Button userId;
-	@FXML
-	private Button txtPassword;
+    public MainController() {
+    	super();
+    	 
+    }
+	public MainController(User user) {
+		
+		super();
+		this.user=user;
+    }
+	
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/templates/main.fxml"));
+        
+        stage.setTitle("FXML Welcome");
+        stage.setScene(new Scene(root, 600, 275));
+        stage.show();
+    }
     
+    public static void main(String[] args) 
+    {
+        Application.launch(MainController.class, args);
+    }
 }

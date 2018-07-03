@@ -37,7 +37,7 @@ fx:controller="control.LoginController"
                   <PasswordField id="txtPassword" fx:id="txtPassword" />
                </children>
             </VBox>
-            <Button id="btnLogin" fx:id="btnLogin" mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#handleLoginButtonAction"/>
+            <Button id="btnLogin" fx:id="btnLogin" mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>
