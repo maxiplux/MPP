@@ -45,12 +45,19 @@ public class MainController extends Application {
         
         Button btnCheckoutBooks = (Button) root.lookup("#btnCheckoutBooks");
 		btnCheckoutBooks.setOnAction((event) -> {
-		 System.out.println("btnCheckoutBooks");
+			CheckoutController checkoutcontroller = new CheckoutController();
+			try {
+				checkoutcontroller.start(this.primaryStage);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		});
 		
 		Button btnBooks = (Button) root.lookup("#btnBooks");
 		btnBooks.setOnAction((event) -> {
-		 System.out.println("btnBooks");
+			
 		});
 		
 		

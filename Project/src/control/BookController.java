@@ -10,11 +10,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class TemplateController extends Application {
+public class BookController extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/templates/book-list.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("calculator2.fxml"));
         
         stage.setTitle("FXML Welcome");
         stage.setScene(new Scene(root, 300, 275));
@@ -23,6 +23,6 @@ public class TemplateController extends Application {
     
     public static void main(String[] args) 
     {
-        Application.launch(TemplateController.class, args);
+        Application.launch(BookController.class, args);
     }
 }
