@@ -29,8 +29,12 @@
       <ListView fx:id="ListUsers" prefHeight="145.0" prefWidth="286.0" GridPane.rowIndex="1" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
+            <Button fx:id="btnBack" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Back" textAlignment="CENTER">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Button>
             <Button fx:id="btnNewUser" mnemonicParsing="false" text="New User" />
-            <Button fx:id="btnEditUser" mnemonicParsing="false" text="Edit User" />
          </children>
       </HBox>
       <VBox alignment="BOTTOM_RIGHT" prefHeight="67.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -52,16 +56,17 @@
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.0" minWidth="10.0" prefWidth="230.0" />
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Firts Name" />
-            <Label text="Last Name" GridPane.rowIndex="1" />
-            <TextField fx:id="txtFirtsName" promptText="Firts Name" GridPane.columnIndex="1" />
-            <TextField fx:id="txtLastName" promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label text="Firts Name" GridPane.rowIndex="1" />
+            <Label text="Last Name" GridPane.rowIndex="2" />
+            <TextField fx:id="txtFirtsName" promptText="Firts Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtLastName" promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="109.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.0" minWidth="10.0" prefWidth="121.0" />
@@ -80,7 +85,7 @@
                   <TextField fx:id="txtPhone" promptText="Phone" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
                <children>
                   <Label text="Address" textAlignment="CENTER" textFill="#232425">
                      <font>
@@ -92,16 +97,10 @@
                   </Label>
                </children>
             </VBox>
+            <Label text="Id" />
+            <Label fx:id="txtmemberId" prefHeight="15.0" prefWidth="225.0" text="NEW" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
-         <children>
-            <Button fx:id="btnBack" mnemonicParsing="false" prefHeight="39.0" prefWidth="148.0" text="Back" textAlignment="CENTER">
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-            </Button>
-         </children>
-      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2" />
    </children>
 </GridPane>

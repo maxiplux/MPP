@@ -100,15 +100,15 @@ public class TestData {
 	//create library members
 
 	public void libraryMemberData() {
-		LibraryMember libraryMember = new LibraryMember("1001", "Andy", "Rogers", "641-223-2211", addresses.get(4));
+		LibraryMember libraryMember = new LibraryMember("1", "Andy", "Rogers", "641-223-2211", addresses.get(4));
 		members.add(libraryMember);
-		libraryMember = new LibraryMember("1002", "Drew", "Stevens", "702-998-2414", addresses.get(5));
-		members.add(libraryMember);
-
-		libraryMember = new LibraryMember("1003", "Sarah", "Eagleton", "451-234-8811", addresses.get(6));
+		libraryMember = new LibraryMember("2", "Drew", "Stevens", "702-998-2414", addresses.get(5));
 		members.add(libraryMember);
 
-		libraryMember = new LibraryMember("1004", "Ricardo", "Montalbahn", "641-472-2871", addresses.get(7));
+		libraryMember = new LibraryMember("3", "Sarah", "Eagleton", "451-234-8811", addresses.get(6));
+		members.add(libraryMember);
+
+		libraryMember = new LibraryMember("4", "Ricardo", "Montalbahn", "641-472-2871", addresses.get(7));
 		members.add(libraryMember);
 
 		DataAccessFacade.loadMemberMap(members);
