@@ -5,6 +5,7 @@ import java.io.ObjectOutputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,6 +30,12 @@ public class DataAccessFacade implements DataAccess {
 		String memberId = member.getMemberId();
 		mems.put(memberId, member);
 		saveToStorage(StorageType.MEMBERS, mems);
+	}
+	
+	public void saveAbook(Book bk) {
+		List<Book> bks=new ArrayList<Book>();
+			bks.add(bk);
+		 loadBookMap(bks);
 	}
 
 	@SuppressWarnings("unchecked")
