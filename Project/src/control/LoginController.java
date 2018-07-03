@@ -50,7 +50,7 @@ public class LoginController extends Application {
 				User user = entry.getValue();
 				if (user.authenticate(userId.getText() , txtPassword.getText()))
 				{
-					System.out.println("ok");
+					
 					userOrIdWrong=false;
 					secondWindow = new MainController(user);
 					
