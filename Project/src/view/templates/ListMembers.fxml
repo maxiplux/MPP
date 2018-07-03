@@ -39,7 +39,7 @@
                <graphic>
                   <ImageView fx:id="btnSave" fitHeight="36.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../MyFxmlCalcultaor/src/save.png" />
+                        <Image url="@save.png" />
                      </image>
                   </ImageView>
                </graphic>

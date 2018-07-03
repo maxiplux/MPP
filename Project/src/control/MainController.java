@@ -22,6 +22,7 @@ import util.Util;
 
 public class MainController extends Application {
     private User user;
+    private Stage primaryStage;
     
     public MainController() {
     	super();
@@ -35,6 +36,7 @@ public class MainController extends Application {
 	
     @Override
     public void start(Stage stage) throws Exception {
+    	this.primaryStage = stage;
         Parent root = FXMLLoader.load(getClass().getResource("/view/templates/main.fxml"));
         
         stage.setTitle("FXML");
@@ -55,6 +57,16 @@ public class MainController extends Application {
 		Button btnLibraryMembers = (Button) root.lookup("#btnLibraryMembers");
 		btnLibraryMembers.setOnAction((event) -> {
 		 System.out.println("btnLibraryMembers");
+		 
+		 LibraryMemberController librarymember = new LibraryMemberController();
+		 try {
+			librarymember.start(this.primaryStage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		 
 		});
 		
         stage.show();
