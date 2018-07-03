@@ -37,6 +37,7 @@ public class LoginController {
 			User user = entry.getValue();
 			if (user.authenticate(userId.getText(), txtPassword.getText())) {
 				System.out.println("ok");
+				
 				userOrIdWrong = false;
 			}
 		}
