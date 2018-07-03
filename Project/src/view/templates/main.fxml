@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="control.MainController"
 >
    <children>
       <HBox alignment="CENTER" layoutX="98.0" layoutY="133.0" prefHeight="148.0" prefWidth="436.0" spacing="15.0">

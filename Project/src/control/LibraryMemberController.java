@@ -12,16 +12,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
-
 import javafx.stage.Stage;
 import model.dataaccess.DataAccess;
 import model.dataaccess.DataAccessFacade;
 import model.domain.Address;
 import model.domain.LibraryMember;
 import model.domain.User;
+import view.MainWindow;
 
 public class LibraryMemberController extends Application {
 	private User user;
@@ -93,9 +93,9 @@ public class LibraryMemberController extends Application {
 
 		Button btnBack = (Button) root.lookup("#btnBack");
 		btnBack.setOnAction((event) -> {
-			MainController maincontroller = new MainController(user);
+			MainWindow mainWindow = new MainWindow(user);
 			try {
-				maincontroller.start(this.primaryStage);
+				mainWindow.start(this.primaryStage);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

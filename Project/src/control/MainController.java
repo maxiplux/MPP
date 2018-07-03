@@ -1,49 +1,38 @@
 package control;
 
-
-
- 
-
-import java.util.HashMap;
-import java.util.Map.Entry;
-
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
-import model.dataaccess.DataAccess;
-import model.dataaccess.DataAccessFacade;
-import model.domain.User;
-import util.Util;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MainController extends Application {
-    private User user;
-    private Stage primaryStage;
-    
-    public MainController() {
-    	super();
-    	 
-    }
-	public MainController(User user) {
-		
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.stage.Stage;
+import model.domain.User;
+
+public class MainController implements Initializable {
+	private User user;
+	private Stage primaryStage;
+
+	@FXML
+	private Button btnCheckoutBooks;
+	@FXML
+	private Button btnBooks;
+	@FXML
+	private Button btnLibraryMembers;
+
+	public MainController() {
 		super();
-		this.user=user;
-    }
-	
-    @Override
-    public void start(Stage stage) throws Exception {
-    	this.primaryStage = stage;
-        Parent root = FXMLLoader.load(getClass().getResource("/view/templates/main.fxml"));
-        
-        stage.setTitle("FXML");
-        stage.setScene(new Scene(root, 600, 275));
-        
-        
-        Button btnCheckoutBooks = (Button) root.lookup("#btnCheckoutBooks");
+	}
+
+	public MainController(Stage primaryStage, User user) {
+		this.primaryStage = primaryStage;
+		this.user = user;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
 		btnCheckoutBooks.setOnAction((event) -> {
 			CheckoutController checkoutcontroller = new CheckoutController();
 			try {
@@ -52,35 +41,24 @@ public class MainController extends Application {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		});
 		
-		Button btnBooks = (Button) root.lookup("#btnBooks");
 		btnBooks.setOnAction((event) -> {
 			
 		});
+
 		
-		
-		Button btnLibraryMembers = (Button) root.lookup("#btnLibraryMembers");
 		btnLibraryMembers.setOnAction((event) -> {
-		 System.out.println("btnLibraryMembers");
-		 
-		 LibraryMemberController librarymember = new LibraryMemberController();
-		 try {
-			librarymember.start(this.primaryStage);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-		 
+			System.out.println("btnLibraryMembers");
+
+			LibraryMemberController librarymember = new LibraryMemberController();
+			try {
+				librarymember.start(this.primaryStage);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		});
-		
-        stage.show();
-    }
-    
-    public static void main(String[] args) 
-    {
-        Application.launch(MainController.class, args);
-    }
+	}
 }
