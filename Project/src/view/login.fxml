@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="302.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="control.Main"
+fx:controller="control.LoginController"
 >
    <children>
       <GridPane layoutX="38.0" layoutY="13.0" prefHeight="140.0" prefWidth="227.0">
