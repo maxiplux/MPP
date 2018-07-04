@@ -59,7 +59,7 @@ public class CheckoutRecordEntrySuccessController extends Application {
 		lblBookName.setText(this.checkoutrecordentry.getBookcopy().getBook().getTitle());
 		
 		lblMemberId.setText(this.checkoutrecordentry.getMember().getMemberId() );
-		lblMemberName.setText("who has name it ?");
+		lblMemberName.setText(this.checkoutrecordentry.getMember().getFirstName());
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/LLLL/yyyy");
 
