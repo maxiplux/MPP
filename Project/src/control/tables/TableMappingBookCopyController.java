@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import control.MainWindow;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,7 +19,7 @@ import model.dataaccess.DataAccessFacade;
 import model.domain.Book;
 import model.domain.BookCopy;
 import model.domain.User;
-import view.MainWindow;
+
 
 /**
  *

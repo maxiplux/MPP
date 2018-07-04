@@ -15,7 +15,7 @@ import model.dataaccess.DataAccess;
 import model.dataaccess.DataAccessFacade;
 import model.domain.User;
 import util.Util;
-import view.MainWindow;
+
 
 public class LoginController extends Application {
 	public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class LoginController extends Application {
 	}
 
 	private boolean userOrIdWrong = true;
-	private MainController secondWindow;
+	private MainWindow secondWindow;
 
 	private Stage primaryStage;
 

@@ -17,7 +17,7 @@ import model.domain.CheckoutRecordEntry;
 import model.domain.LibraryMember;
 import model.domain.User;
 import util.Util;
-import view.MainWindow;
+
 
 public class CheckEntriesMemberController extends Application {
 
@@ -68,7 +68,7 @@ public class CheckEntriesMemberController extends Application {
 
 			
 			if (userOrIdWrong) {
-				Util.showAlert("User id or password Wrong ", "Error login", AlertType.ERROR);
+				Util.showAlert("Member id No found", "Error", AlertType.ERROR);
 			}
 
 		});

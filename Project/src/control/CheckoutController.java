@@ -20,7 +20,7 @@ import model.domain.CheckoutRecordEntry;
 import model.domain.LibraryMember;
 import model.domain.User;
 import util.Util;
-import view.MainWindow;
+
 
 public class CheckoutController extends Application {
 
