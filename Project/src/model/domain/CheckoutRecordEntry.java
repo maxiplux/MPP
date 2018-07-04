@@ -37,11 +37,16 @@ public class CheckoutRecordEntry implements Serializable {
 	
 
 	 
-
+	public String fixSize(String string)
+	{
+		return null ;
+	}
 	@Override
 	public String toString() {
-		return "CheckoutRecordEntry [bookcopy=" + bookcopy + ", checkoutDate=" + checkoutDate + ", dueDate=" + dueDate
-				+ "]";
+		
+		
+		String s1="                                                                       ";
+		return String.format("|%s\t|%s\t\t\t|%s\t|%s\t|",bookcopy.getBook().getIsbn(), bookcopy.getBook().getTitle()+s1.substring(0, 30-bookcopy.getBook().getTitle().length()),checkoutDate,dueDate)  ;
 	}
 
 	public LibraryMember getMember() {

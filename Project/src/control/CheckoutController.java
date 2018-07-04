@@ -127,9 +127,11 @@ public class CheckoutController extends Application {
 			}
 
 			if (badisbn) {
-				Util.showAlert("Book Isbn No found", "Not data found", AlertType.WARNING);
+				Util.showAlert("Request book is not found", "Not data found", AlertType.WARNING);
 				return;
 			}
+			
+			
 			else {
 				if (temp_book.isAvailable()) 
 				{
