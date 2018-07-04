@@ -17,57 +17,64 @@ import javafx.stage.Stage;
 import model.dataaccess.DataAccess;
 import model.dataaccess.DataAccessFacade;
 import model.domain.Book;
+import model.domain.BookCopy;
 
 /**
  *
  * @author ericjbruno
  */
-public class TableMappingController implements Initializable {
-	private Book book;
+public class TableMappingBookCopyController implements Initializable {
 	private Stage primaryStage;
-	public TableMappingController(Stage primaryStage) {
+	Book book;
+	public TableMappingBookCopyController()
+	{
+		super();
 		
-		this.primaryStage = primaryStage;
 	}
 	
-	public void setBook(Book book) {
-		this.book = book;
+	public TableMappingBookCopyController(Book book,Stage primaryStage)
+	{
+		super();
+		this.book=book;
+		this.primaryStage=primaryStage;
 	}
-
-	public void setPrimaryStage(Stage primaryStage) {
-		this.primaryStage = primaryStage;
-	}
-
-	
-	
-	
-	
 	// The table and columns
 	@FXML
-	TableView<Book> itemTbl;
+	TableView<BookCopy> itemTbl;
 
 	@FXML
-	TableColumn itemIsbn;
+	TableColumn CopyId;
 	@FXML
-	TableColumn itemName;
+	TableColumn isAvaible;
 	@FXML
-	TableColumn itemCheckoutDate;
+	TableColumn checkoutBy;
 
 	// The table's data
-	ObservableList<Book> data;
+	ObservableList<BookCopy> data;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 
 		// Set up the table data
-		itemIsbn.setCellValueFactory(new PropertyValueFactory<Book, String>("isbn"));
-		itemName.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
-		itemCheckoutDate.setCellValueFactory(new PropertyValueFactory<Book, Integer>("maxCheckoutLength"));
+		System.out.println("¿¿¿");
+		System.out.println(this.book);
+		System.out.println("¿¿¿");
+		CopyId.setCellValueFactory(new PropertyValueFactory<BookCopy, String>("isbn"));
+		isAvaible.setCellValueFactory(new PropertyValueFactory<BookCopy, String>("title"));
+		checkoutBy.setCellValueFactory(new PropertyValueFactory<BookCopy, Integer>("maxCheckoutLength"));
 		data = FXCollections.observableArrayList();
 		DataAccess db = new DataAccessFacade();
 		HashMap<String, Book> books = db.readBooksMap();
-		for (Entry<String, Book> entry : books.entrySet()) {
-			data.add(entry.getValue());
+		for (Entry<String, Book> book : books.entrySet()) {
+			if (book.getValue().hasCopies() )
+			{
+				for (BookCopy bookCopy : book.getValue().getCopies()) 
+				{
+					data.add(bookCopy);
+					
+				}
+				
+			}
 
 		}
 
@@ -76,16 +83,6 @@ public class TableMappingController implements Initializable {
 		itemTbl.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 		    if (newSelection != null) 
 		    {
-		    	
-		    	System.out.println(newSelection);
-		    	BookCopyController bookcontroller = new BookCopyController(newSelection);
-		    	try {
-					bookcontroller.start(this.primaryStage);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		    	
 		        
 		        
 		    }

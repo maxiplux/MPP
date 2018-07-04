@@ -91,6 +91,10 @@ final public class Book implements Serializable {
 	public BookCopy[] getCopies() {
 		return copies;
 	}
+	
+	public boolean hasCopies() {
+		return copies!=null;
+	}
 
 	public List<Author> getAuthors() {
 		return authors;

@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="405.0" prefWidth="613.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tableviewfxmlsample1.SampleController">
+<AnchorPane id="AnchorPane" prefHeight="405.0" prefWidth="613.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.tables.TableMappingBookCopyController">
   <children>
-    <Button fx:id="btnnewCopy" layoutX="14.0" layoutY="82.0" onAction="#handleButtonAction" text="Create Copy" />
+    <Button fx:id="btnnewCopy" layoutX="14.0" layoutY="82.0" text="Create Copy" />
     <Label fx:id="label" layoutX="126.0" layoutY="120.0" minHeight="16.0" minWidth="69.0" />
     <TableView fx:id="itemTbl" layoutX="14.0" layoutY="115.0" prefHeight="242.0" prefWidth="586.0">
       <columns>
-        <TableColumn fx:id="itemColCopyId" prefWidth="75.0" text="Copy Id" />
-        <TableColumn fx:id="itemColIsAvaible" prefWidth="271.0" text="Is Avaible" />
-        <TableColumn fx:id="itemColCheckout" prefWidth="223.0" text="Checkout By " />
+        <TableColumn fx:id="CopyId" prefWidth="75.0" text="Copy Id" />
+        <TableColumn fx:id="isAvaible" prefWidth="271.0" text="Is Avaible" />
+        <TableColumn fx:id="checkoutBy" prefWidth="223.0" text="Checkout By " />
       </columns>
     </TableView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="244.0" layoutY="21.0" prefHeight="15.0" prefWidth="150.0" text="Copies about ">

@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="405.0" prefWidth="613.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="control.tables.TableMappingController"
+
 >
   <children>
     <Button fx:id="btnCopies" layoutX="513.0" layoutY="366.0"  text="ViewCopies"   />

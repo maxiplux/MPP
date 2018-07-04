@@ -4,6 +4,8 @@ package control;
 
  
 
+import control.tables.TableMappingBookCopyController;
+import control.tables.TableMappingController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,10 +16,20 @@ public class BookController extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/templates/book-list.fxml"));
+    	FXMLLoader  root = new FXMLLoader(getClass().getResource("/view/templates/book-list.fxml"));
+ 
+    	
+        
         
         stage.setTitle("FXML Welcome");
-        stage.setScene(new Scene(root, 600, 400));
+        TableMappingController controller = new TableMappingController(stage);
+        root.setController(controller);        
+        stage.setScene(new Scene(root.load(), 600, 400));
+        
+        
+        
+ 
+        
         stage.show();
     }
     
