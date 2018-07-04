@@ -24,7 +24,7 @@ public class BookCopyController extends Application {
 		// TODO Auto-generated constructor stub
 		super();
 		this.book = newSelection;
-		this.user=user;
+		this.user = user;
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class BookCopyController extends Application {
 
 		stage.setTitle("FXML Welcome" + this.book);
 
-		TableMappingBookCopyController controller = new TableMappingBookCopyController(this.book, stage,this.user);
+		TableMappingBookCopyController controller = new TableMappingBookCopyController(this.book, stage, this.user);
 
 		root.setController(controller);
 		stage.setScene(new Scene(root.load(), 600, 400));

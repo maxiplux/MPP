@@ -16,7 +16,6 @@ import model.dataaccess.DataAccessFacade;
 import model.domain.User;
 import util.Util;
 
-
 public class LoginController extends Application {
 	public static void main(String[] args) {
 
@@ -41,8 +40,6 @@ public class LoginController extends Application {
 		TextField txtPassword = (TextField) root.lookup("#txtPassword");
 
 		Button button = (Button) root.lookup("#btnLogin");
-
-		
 
 		button.setOnAction((event) -> {
 

@@ -4,12 +4,14 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import control.BookController;
 import control.MainMenuController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,7 +21,6 @@ import model.dataaccess.DataAccessFacade;
 import model.domain.Book;
 import model.domain.BookCopy;
 import model.domain.User;
-
 
 /**
  *
@@ -35,6 +36,9 @@ public class TableMappingBookCopyController implements Initializable {
 	// The table and columns
 	@FXML
 	TableView<BookCopy> itemTbl;
+
+	@FXML
+	Label lblBookName;
 
 	@FXML
 	TableColumn CopyId;
@@ -66,9 +70,8 @@ public class TableMappingBookCopyController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		DataAccess db = new DataAccessFacade();
 		// Set up the table data
-		System.out.println("::::::::::::::::::::::::::");
-		System.out.println(this.book.getNumCopies());
-		System.out.println("::::::::::::::::::::::::::");
+
+		lblBookName.setText(String.format("%s / %s", this.book.getIsbn(), this.book.getTitle()));
 
 		CopyId.setCellValueFactory(new PropertyValueFactory<BookCopy, String>("copyNum"));
 		isAvaible.setCellValueFactory(new PropertyValueFactory<BookCopy, String>("exists"));
@@ -112,15 +115,15 @@ public class TableMappingBookCopyController implements Initializable {
 
 		btnBack.setOnAction((event) -> {
 
-			MainMenuController secondWindow = new MainMenuController(this.user);
-
+			BookController bookcontroller = new BookController(user);
 			try {
-				secondWindow.start(this.primaryStage);
+				bookcontroller.start(this.primaryStage);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
+			
 		});
 
 	}

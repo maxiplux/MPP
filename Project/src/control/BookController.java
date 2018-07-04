@@ -11,9 +11,8 @@ public class BookController extends Application {
 
 	private User user;
 
-	BookController (User user)
-	{
-		this.user=user;
+	public BookController(User user) {
+		this.user = user;
 	}
 
 	@Override
@@ -21,7 +20,7 @@ public class BookController extends Application {
 		FXMLLoader root = new FXMLLoader(getClass().getResource("/view/templates/book-list.fxml"));
 
 		stage.setTitle("FXML Welcome");
-		TableMappingController controller = new TableMappingController(stage,this.user);
+		TableMappingController controller = new TableMappingController(stage, this.user);
 		root.setController(controller);
 		stage.setScene(new Scene(root.load(), 600, 400));
 

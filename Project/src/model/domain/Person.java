@@ -21,11 +21,11 @@ public class Person implements Serializable {
 	}
 
 	public String getFirstName() {
-		return firstName == null  ? ""  : firstName;
+		return firstName == null ? "" : firstName;
 	}
 
 	public String getLastName() {
-		return lastName == null  ? ""  : lastName;
+		return lastName == null ? "" : lastName;
 	}
 
 	public String getTelephone() {

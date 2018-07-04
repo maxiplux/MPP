@@ -44,18 +44,17 @@ public class TableMappingController implements Initializable {
 	TableColumn itemName;
 	@FXML
 	TableColumn itemCheckoutDate;
-	
+
 	@FXML
 	Button btnBack;
 	// The table's data
 	ObservableList<Book> data;
 
-	public TableMappingController(Stage primaryStage,User user) {
-		if (primaryStage==null)
-		{
+	public TableMappingController(Stage primaryStage, User user) {
+		if (primaryStage == null) {
 			Util.showAlert("Stage null", "Stage null", AlertType.ERROR);
 		}
-		this.user=user;		
+		this.user = user;
 		this.primaryStage = primaryStage;
 	}
 
@@ -66,11 +65,11 @@ public class TableMappingController implements Initializable {
 		itemIsbn.setCellValueFactory(new PropertyValueFactory<Book, String>("isbn"));
 		itemName.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
 		itemCheckoutDate.setCellValueFactory(new PropertyValueFactory<Book, Integer>("maxCheckoutLength"));
-		
+
 		data = FXCollections.observableArrayList();
-		
+
 		DataAccess db = new DataAccessFacade();
-		
+
 		HashMap<String, Book> books = db.readBooksMap();
 		for (Entry<String, Book> entry : books.entrySet()) {
 			data.add(entry.getValue());
@@ -78,8 +77,7 @@ public class TableMappingController implements Initializable {
 		}
 
 		itemTbl.setItems(data);
-		
-		 
+
 		btnBack.setOnAction((event) -> {
 			MainMenuController mainMenuController = new MainMenuController(user);
 			try {
@@ -89,16 +87,13 @@ public class TableMappingController implements Initializable {
 				e.printStackTrace();
 			}
 		});
-		
 
 		itemTbl.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
 
-				
-				BookCopyController bookcontroller = new BookCopyController(newSelection,this.user);
+				BookCopyController bookcontroller = new BookCopyController(newSelection, this.user);
 				try {
-					
-				
+
 					bookcontroller.start(this.primaryStage);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

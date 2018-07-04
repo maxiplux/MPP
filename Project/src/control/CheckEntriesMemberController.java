@@ -18,57 +18,52 @@ import model.domain.LibraryMember;
 import model.domain.User;
 import util.Util;
 
-
 public class CheckEntriesMemberController extends Application {
 
 	private User user;
-	
-	CheckEntriesMemberController (User user)
-	{
-		this.user=user;
+
+	CheckEntriesMemberController(User user) {
+		this.user = user;
 	}
 
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/templates/checkcheckoutsfromember.fxml"));
-		
+
 		stage.setTitle("FXML Welcome");
 		stage.setScene(new Scene(root, 300, 300));
-		
+
 		TextField memberId = (TextField) root.lookup("#memberId");
-		
+
 		Button btnPrintConsole = (Button) root.lookup("#btnPrintConsole");
 		Button btnBack = (Button) root.lookup("#btnBack");
-		
-		
+
 		btnPrintConsole.setOnAction((event) -> {
-			boolean userOrIdWrong =true;
+			boolean userOrIdWrong = true;
 
 			DataAccess db = new DataAccessFacade();
 			HashMap<String, LibraryMember> users = db.readMemberMap();
-			
+
 			for (Entry<String, LibraryMember> entry : users.entrySet()) {
 				String key = entry.getKey();
 				LibraryMember member = entry.getValue();
-				
-				if ( member.getMemberId().equals(memberId.getText()))
-				{
+
+				if (member.getMemberId().equals(memberId.getText())) {
 					System.out.println("|ISBN\t\t|Book Name\t\t\t\t\t|checkout Date\t|dueDate\t|");
 					for (CheckoutRecordEntry entrie : member.getCheckoutRecordEntries()) {
 						System.out.println(entrie);
 					}
-					userOrIdWrong=false;
-					
-				} 
-				}
+					userOrIdWrong = false;
 
-			
+				}
+			}
+
 			if (userOrIdWrong) {
 				Util.showAlert("Member id No found", "Error", AlertType.ERROR);
 			}
 
 		});
-		
+
 		btnBack.setOnAction((event) -> {
 			MainMenuController mainMenuController = new MainMenuController(user);
 			try {
@@ -78,10 +73,7 @@ public class CheckEntriesMemberController extends Application {
 				e.printStackTrace();
 			}
 		});
-		
-		
-		
-		
+
 		stage.show();
 	}
 }

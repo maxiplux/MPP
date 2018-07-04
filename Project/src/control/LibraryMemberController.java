@@ -22,13 +22,11 @@ import model.domain.Address;
 import model.domain.LibraryMember;
 import model.domain.User;
 
-
 public class LibraryMemberController extends Application {
-	LibraryMemberController (User user)
-	{
-		this.user=user;
+	LibraryMemberController(User user) {
+		this.user = user;
 	}
-	
+
 	private User user;
 	private Stage primaryStage;
 	private TextField txtFirtsName;
@@ -99,7 +97,7 @@ public class LibraryMemberController extends Application {
 
 		Button btnBack = (Button) root.lookup("#btnBack");
 		btnBack.setOnAction((event) -> {
-			
+
 			MainMenuController mainMenuController = new MainMenuController(user);
 			try {
 				mainMenuController.start(this.primaryStage);

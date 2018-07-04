@@ -26,7 +26,7 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="56.0" prefHeight="19.0" prefWidth="204.0" text="Book Name" textAlignment="CENTER">
+      <Label fx:id="lblBookName" alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="56.0" prefHeight="19.0" prefWidth="204.0" text="Book Name" textAlignment="CENTER">
          <font>
             <Font size="13.0" />
          </font>

@@ -21,7 +21,6 @@ import model.domain.LibraryMember;
 import model.domain.User;
 import util.Util;
 
-
 public class CheckoutController extends Application {
 
 	private User user;
@@ -55,7 +54,6 @@ public class CheckoutController extends Application {
 		}
 		return null;
 	}
-
 
 	private Stage primaryStage;
 
