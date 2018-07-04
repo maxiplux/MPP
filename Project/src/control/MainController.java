@@ -55,9 +55,9 @@ public class MainController implements Initializable {
 				return;
 			}
 			
-			CheckoutController cc = new CheckoutController();
+			BookController bc = new BookController(user);
 			try {
-				cc.start(this.primaryStage);
+				bc.start(this.primaryStage);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
