@@ -10,16 +10,13 @@ public class CheckoutRecordEntry implements Serializable {
 	private LocalDate checkoutDate;
 	private LocalDate dueDate;
 	private LibraryMember member;
-	
-	
 
-	CheckoutRecordEntry(BookCopy bookcopy, LocalDate checkoutDate, LocalDate dueDate,LibraryMember member) 
-	{
+	CheckoutRecordEntry(BookCopy bookcopy, LocalDate checkoutDate, LocalDate dueDate, LibraryMember member) {
 		super();
 		this.bookcopy = bookcopy;
 		this.checkoutDate = checkoutDate;
 		this.dueDate = dueDate;
-		this.member=member;
+		this.member = member;
 	}
 
 	public BookCopy getBookcopy() {
@@ -33,20 +30,18 @@ public class CheckoutRecordEntry implements Serializable {
 	public LocalDate getDueDate() {
 		return dueDate;
 	}
-	
-	
 
-	 
-	public String fixSize(String string)
-	{
-		return null ;
+	public String fixSize(String string) {
+		return null;
 	}
+
 	@Override
 	public String toString() {
-		
-		
-		String s1="                                                                       ";
-		return String.format("|%s\t|%s\t\t\t|%s\t|%s\t|",bookcopy.getBook().getIsbn(), bookcopy.getBook().getTitle()+s1.substring(0, 30-bookcopy.getBook().getTitle().length()),checkoutDate,dueDate)  ;
+
+		String s1 = "                                                                       ";
+		return String.format("|%s\t|%s\t\t\t|%s\t|%s\t|", bookcopy.getBook().getIsbn(),
+				bookcopy.getBook().getTitle() + s1.substring(0, 30 - bookcopy.getBook().getTitle().length()),
+				checkoutDate, dueDate);
 	}
 
 	public LibraryMember getMember() {

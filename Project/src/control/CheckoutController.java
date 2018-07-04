@@ -56,9 +56,6 @@ public class CheckoutController extends Application {
 		return null;
 	}
 
-	public static void main(String[] args) {
-		Application.launch(CheckoutController.class, args);
-	}
 
 	private Stage primaryStage;
 
@@ -77,10 +74,10 @@ public class CheckoutController extends Application {
 
 		btnBack.setOnAction((event) -> {
 
-			MainWindow mainWindow = new MainWindow(user);
+			MainMenuController mainMenuController = new MainMenuController(user);
 
 			try {
-				mainWindow.start(this.primaryStage);
+				mainMenuController.start(this.primaryStage);
 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

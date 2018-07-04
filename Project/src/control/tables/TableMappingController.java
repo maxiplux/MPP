@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 import java.util.ResourceBundle;
 
 import control.BookCopyController;
-import control.MainWindow;
+import control.MainMenuController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -81,9 +81,9 @@ public class TableMappingController implements Initializable {
 		
 		 
 		btnBack.setOnAction((event) -> {
-			MainWindow mainWindow = new MainWindow(user);
+			MainMenuController mainMenuController = new MainMenuController(user);
 			try {
-				mainWindow.start(this.primaryStage);
+				mainMenuController.start(this.primaryStage);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

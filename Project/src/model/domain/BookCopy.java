@@ -17,7 +17,6 @@ final public class BookCopy implements Serializable {
 	private static final long serialVersionUID = -63976228084869815L;
 	private Book book;
 	private int copyNum;
-	private String exists;
 
 	private boolean isAvailable;
 
@@ -95,7 +94,7 @@ final public class BookCopy implements Serializable {
 	public String getPossesion() {
 		CheckoutRecordEntry result = getCopyCheckoutRecordEntry();
 		if(result == null ) return "";
-		return result.getMember().getMemberId() + " - " + result.getMember().getFirstName() +" " + result.getMember().getLastName() ;
+		return result.getMember().getMemberId() + " - " + result.getMember().getFullName();
 	}
 
 	@Override

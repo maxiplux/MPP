@@ -14,14 +14,14 @@ import model.dataaccess.Auth;
 import model.domain.User;
 import util.Util;
 
-public class MainWindow extends Application {
+public class MainMenuController extends Application {
 	public static void main(String[] args) {
-		Application.launch(MainWindow.class, args);
+		Application.launch(MainMenuController.class, args);
 	}
 
 	private User user;
 
-	public MainWindow(User user) {
+	public MainMenuController(User user) {
 		this.user = user;
 	}
 

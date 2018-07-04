@@ -8,9 +8,7 @@ import javafx.stage.Stage;
 import model.domain.User;
 
 public class BookController extends Application {
-	public static void main(String[] args) {
-		Application.launch(BookController.class, args);
-	}
+
 	private User user;
 
 	BookController (User user)

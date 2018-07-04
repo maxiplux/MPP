@@ -24,7 +24,7 @@ public class LoginController extends Application {
 	}
 
 	private boolean userOrIdWrong = true;
-	private MainWindow secondWindow;
+	private MainMenuController secondWindow;
 
 	private Stage primaryStage;
 
@@ -54,7 +54,7 @@ public class LoginController extends Application {
 				if (user.authenticate(userId.getText(), txtPassword.getText())) {
 
 					userOrIdWrong = false;
-					MainWindow secondWindow = new MainWindow(user);
+					MainMenuController secondWindow = new MainMenuController(user);
 
 					try {
 						secondWindow.start(this.primaryStage);

@@ -10,9 +10,6 @@ import model.domain.User;
 
 public class BookCopyController extends Application {
 
-	public static void main(String[] args) {
-		Application.launch(BookCopyController.class, args);
-	}
 	private Book book;
 
 	private User user;

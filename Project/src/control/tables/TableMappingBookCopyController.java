@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-import control.MainWindow;
+import control.MainMenuController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -112,7 +112,7 @@ public class TableMappingBookCopyController implements Initializable {
 
 		btnBack.setOnAction((event) -> {
 
-			MainWindow secondWindow = new MainWindow(this.user);
+			MainMenuController secondWindow = new MainMenuController(this.user);
 
 			try {
 				secondWindow.start(this.primaryStage);

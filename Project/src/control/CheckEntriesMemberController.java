@@ -27,10 +27,6 @@ public class CheckEntriesMemberController extends Application {
 	{
 		this.user=user;
 	}
-	
-	public static void main(String[] args) {
-		Application.launch(CheckEntriesMemberController.class, args);
-	}
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -74,9 +70,9 @@ public class CheckEntriesMemberController extends Application {
 		});
 		
 		btnBack.setOnAction((event) -> {
-			MainWindow mainWindow = new MainWindow(user);
+			MainMenuController mainMenuController = new MainMenuController(user);
 			try {
-				mainWindow.start(stage);
+				mainMenuController.start(stage);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

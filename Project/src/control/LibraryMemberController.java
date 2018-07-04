@@ -24,10 +24,6 @@ import model.domain.User;
 
 
 public class LibraryMemberController extends Application {
-	public static void main(String[] args) {
-		Application.launch(LibraryMemberController.class, args);
-	}
-	
 	LibraryMemberController (User user)
 	{
 		this.user=user;
@@ -104,9 +100,9 @@ public class LibraryMemberController extends Application {
 		Button btnBack = (Button) root.lookup("#btnBack");
 		btnBack.setOnAction((event) -> {
 			
-			MainWindow mainWindow = new MainWindow(user);
+			MainMenuController mainMenuController = new MainMenuController(user);
 			try {
-				mainWindow.start(this.primaryStage);
+				mainMenuController.start(this.primaryStage);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

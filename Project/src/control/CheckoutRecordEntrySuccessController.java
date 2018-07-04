@@ -28,10 +28,6 @@ public class CheckoutRecordEntrySuccessController extends Application {
 		this.checkoutrecordentry = checkoutrecordentry;
 	}
 
-	public static void main(String[] args) {
-		Application.launch(CheckoutRecordEntrySuccessController.class, args);
-	}
-
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/templates/checkoutbook-success.fxml"));
