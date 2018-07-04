@@ -42,7 +42,7 @@ public class MemberController {
 	protected void addMemberButtonAction(ActionEvent event) {
 
 		DataAccess db = new DataAccessFacade();
-		HashMap<String, User> users = db.readUserMap();
+		HashMap<String, LibraryMember> users = db.readMemberMap();
 		int mId= users.size();
 		Address add= new Address(txtStreet.getText(), txtCity.getText(), txtState.getText(), txtZip.getText());
 		LibraryMember lm = new  LibraryMember(mId+"", txtFirtsName.getText(),txtLastName.getText(), txtCity.getText(), add);
