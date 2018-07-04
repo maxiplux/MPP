@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.dataaccess.Auth;
 import model.domain.CheckoutRecordEntry;
+import model.domain.User;
 import util.Util;
 
 public class CheckoutRecordEntrySuccessController extends Application {
@@ -18,11 +19,12 @@ public class CheckoutRecordEntrySuccessController extends Application {
 	private CheckoutRecordEntry checkoutrecordentry;
 	
 	
+	private User user;
 	
-	
-	CheckoutRecordEntrySuccessController(CheckoutRecordEntry checkoutrecordentry)
+	CheckoutRecordEntrySuccessController(CheckoutRecordEntry checkoutrecordentry, User user)
 	{
-		super();		
+		super();
+		this.user=user;
 		this.checkoutrecordentry=checkoutrecordentry;
 	}
 
@@ -52,7 +54,7 @@ public class CheckoutRecordEntrySuccessController extends Application {
 		
 		btnBackMenu.setOnAction((event) -> {
 			System.out.println(event);
-			CheckoutController checkoutcontroller = new CheckoutController();
+			CheckoutController checkoutcontroller = new CheckoutController(this.user);
 			try {
 				checkoutcontroller.start(stage);
 			} catch (Exception e) {

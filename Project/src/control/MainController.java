@@ -40,7 +40,9 @@ public class MainController implements Initializable {
 				Util.showAlert("Administrator can not checkout books", "Permission denied", AlertType.ERROR);
 				return;
 			}
-			CheckoutController checkoutcontroller = new CheckoutController();
+			
+			CheckoutController checkoutcontroller = new CheckoutController(this.user);
+			
 			try {
 				checkoutcontroller.start(this.primaryStage);
 			} catch (Exception e) {
