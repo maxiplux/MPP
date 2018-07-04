@@ -30,12 +30,14 @@
             <Label text="Book Name" GridPane.rowIndex="1" />
             <Label text="Checkout Date" GridPane.rowIndex="4" />
             <Label text="Member Name" GridPane.rowIndex="3" />
+            
             <Label fx:id="lblIsbn" text="ISBN" GridPane.columnIndex="1" />
             <Label fx:id="lblBookName" text="Book Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="lblMemberId" text="Member Id" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="lblMemberName" text="Member Name" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label fx:id="lblCheckoutDate" text="Checkout Date" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label fx:id="lblDueDate" text="Due Date" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            
          </children>
       </GridPane>
       <Button fx:id="btnBackMenu" layoutX="115.0" layoutY="259.0" mnemonicParsing="false" text="Back to Menu" />

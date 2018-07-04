@@ -42,7 +42,7 @@ public class LoginController extends Application {
 
 		Button button = (Button) root.lookup("#btnLogin");
 
-		System.out.println(root.lookup("#btnLogin"));
+		
 
 		button.setOnAction((event) -> {
 

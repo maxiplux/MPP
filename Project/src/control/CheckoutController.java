@@ -23,6 +23,7 @@ import util.Util;
 import view.MainWindow;
 
 public class CheckoutController extends Application {
+	
 	protected static CheckoutRecordEntry checkoutABook(String userId, String isbn) {
 		DataAccess db = new DataAccessFacade();
 		HashMap<String, LibraryMember> memMap = db.readMemberMap();
@@ -67,7 +68,7 @@ public class CheckoutController extends Application {
 		this.primaryStage = stage;
 		Parent root = FXMLLoader.load(getClass().getResource("/view/templates/checkoutbook.fxml"));
 
-		stage.setTitle("FXML Welcome");
+		stage.setTitle("FXML Checkout Book Controller");
 		stage.setScene(new Scene(root, 300, 200));
 
 		TextField memberId = (TextField) root.lookup("#memberId");
@@ -116,13 +117,25 @@ public class CheckoutController extends Application {
 			if (badisbn) {
 				Util.showAlert("Book Isbn No found", "Not data found", AlertType.WARNING);
 				return;
-			} else {
-				if (!temp_book.isAvailable()) {
-					Util.showAlert("Book is avaible in this moment ", "Not data found", AlertType.INFORMATION);
+			}
+			else {
+				if (temp_book.isAvailable()) 
+				{
+					Util.showAlert("Book is avaible in this moment ", "found", AlertType.INFORMATION);
 					CheckoutRecordEntry cre = checkoutABook(memberId.getText(), txtIsbn.getText());
+					CheckoutRecordEntrySuccessController checkoutrecordentrysuccess = new CheckoutRecordEntrySuccessController(cre);
+					
+					try {
+						checkoutrecordentrysuccess.start(stage);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 					return;
 				}
 			}
+			
 
 			// Util.showAlert("All is good", "All is good", AlertType.INFORMATION);
 
