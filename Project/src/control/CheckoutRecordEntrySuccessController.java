@@ -1,5 +1,8 @@
 package control;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -45,9 +48,28 @@ public class CheckoutRecordEntrySuccessController extends Application {
 		Label lblIsbn = (Label) root.lookup("#lblIsbn");
 		Label lblBookName = (Label) root.lookup("#lblBookName");
 		Label lblMemberId = (Label) root.lookup("#lblMemberId");
+		
 		Label lblMemberName = (Label) root.lookup("#lblMemberName");
+		
 		Label lblCheckoutDate = (Label) root.lookup("#lblCheckoutDate");
-		Label lblDueDate = (Label) root.lookup("#lblDueDate"); 
+		Label lblDueDate = (Label) root.lookup("#lblDueDate");
+		
+		
+		lblIsbn.setText(this.checkoutrecordentry.getBookcopy().getBook().getIsbn());
+		lblBookName.setText(this.checkoutrecordentry.getBookcopy().getBook().getTitle());
+		
+		lblMemberId.setText(this.checkoutrecordentry.getMember().getMemberId() );
+		lblMemberName.setText("who has name it ?");
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/LLLL/yyyy");
+
+
+		
+		lblCheckoutDate.setText(this.checkoutrecordentry.getCheckoutDate().format(formatter ) );
+		lblDueDate.setText(this.checkoutrecordentry.getDueDate().format(formatter ) );
+		
+		
+		
 		
 		
 		Button btnBackMenu = (Button)root.lookup("#btnBackMenu");

@@ -17,7 +17,7 @@ final public class LibraryMember extends Person implements Serializable {
 	}
 
 	public CheckoutRecordEntry addCheckoutRecordEntry(BookCopy bookcopy, LocalDate checkoutDate, LocalDate dueDate) {
-		CheckoutRecordEntry cre = new CheckoutRecordEntry(bookcopy, checkoutDate, dueDate);
+		CheckoutRecordEntry cre = new CheckoutRecordEntry(bookcopy, checkoutDate, dueDate,this);
 		this.checkoutRecordEntries.add(cre);
 		return cre;
 	}

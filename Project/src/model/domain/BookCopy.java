@@ -43,8 +43,8 @@ final public class BookCopy implements Serializable {
 		return copy.book.getIsbn().equals(book.getIsbn()) && copy.copyNum == copyNum;
 	}
 
-	public String getBook() {
-		return book.getIsbn();
+	public Book getBook() {
+		return book;
 	}
 
 	public int getCopyNum() {

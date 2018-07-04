@@ -73,7 +73,7 @@ public class MainController implements Initializable {
 			}
 			System.out.println("btnLibraryMembers");
 
-			LibraryMemberController librarymember = new LibraryMemberController();
+			LibraryMemberController librarymember = new LibraryMemberController(this.user);
 			try {
 				librarymember.start(this.primaryStage);
 			} catch (Exception e) {

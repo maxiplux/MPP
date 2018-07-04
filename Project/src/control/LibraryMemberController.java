@@ -27,6 +27,12 @@ public class LibraryMemberController extends Application {
 	public static void main(String[] args) {
 		Application.launch(LibraryMemberController.class, args);
 	}
+	
+	LibraryMemberController (User user)
+	{
+		this.user=user;
+	}
+	
 	private User user;
 	private Stage primaryStage;
 	private TextField txtFirtsName;
@@ -97,6 +103,7 @@ public class LibraryMemberController extends Application {
 
 		Button btnBack = (Button) root.lookup("#btnBack");
 		btnBack.setOnAction((event) -> {
+			
 			MainWindow mainWindow = new MainWindow(user);
 			try {
 				mainWindow.start(this.primaryStage);

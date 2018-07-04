@@ -133,7 +133,7 @@ public class CheckoutController extends Application {
 			else {
 				if (temp_book.isAvailable()) 
 				{
-					Util.showAlert("Book is avaible in this moment ", "found", AlertType.INFORMATION);
+					
 					CheckoutRecordEntry cre = checkoutABook(memberId.getText(), txtIsbn.getText());
 					CheckoutRecordEntrySuccessController checkoutrecordentrysuccess = new CheckoutRecordEntrySuccessController(cre,this.user);
 					
