@@ -21,6 +21,13 @@ import view.MainWindow;
 
 public class CheckEntriesMemberController extends Application {
 
+	private User user;
+	
+	CheckEntriesMemberController (User user)
+	{
+		this.user=user;
+	}
+	
 	public static void main(String[] args) {
 		Application.launch(CheckEntriesMemberController.class, args);
 	}
@@ -35,6 +42,7 @@ public class CheckEntriesMemberController extends Application {
 		TextField memberId = (TextField) root.lookup("#memberId");
 		
 		Button btnPrintConsole = (Button) root.lookup("#btnPrintConsole");
+		Button btnBack = (Button) root.lookup("#btnBack");
 		
 		
 		btnPrintConsole.setOnAction((event) -> {
@@ -63,6 +71,16 @@ public class CheckEntriesMemberController extends Application {
 				Util.showAlert("User id or password Wrong ", "Error login", AlertType.ERROR);
 			}
 
+		});
+		
+		btnBack.setOnAction((event) -> {
+			MainWindow mainWindow = new MainWindow(user);
+			try {
+				mainWindow.start(stage);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		});
 		
 		

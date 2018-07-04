@@ -22,6 +22,10 @@ public class MainController implements Initializable {
 	private Button btnBooks;
 	@FXML
 	private Button btnLibraryMembers;
+	
+	
+	@FXML
+	private Button btnMembersRecords;
 
 	public MainController() {
 		super();
@@ -82,5 +86,22 @@ public class MainController implements Initializable {
 			}
 
 		});
+		
+		
+		
+		btnMembersRecords.setOnAction((event) -> {
+		 
+			CheckEntriesMemberController recordsentries = new CheckEntriesMemberController(this.user);
+			try {
+				recordsentries.start(this.primaryStage);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		});
+		
+		
+		
 	}
 }
