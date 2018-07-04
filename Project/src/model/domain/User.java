@@ -12,7 +12,8 @@ final public class User implements Serializable {
 
 	private String password;
 	private Auth authorization;
-	public User(String id, String pass, Auth  auth) {
+
+	public User(String id, String pass, Auth auth) {
 		this.id = id;
 		this.password = pass;
 		this.authorization = auth;
@@ -21,23 +22,26 @@ final public class User implements Serializable {
 	public String getId() {
 		return id;
 	}
+
 	public String getPassword() {
 		return password;
 	}
-	public boolean authenticate(String id , String Password) {
-		return this.id.equals(id) &&  this.password.equals(password);
-				
+
+	public boolean authenticate(String id, String Password) {
+		return this.id.equals(id) && this.password.equals(password);
+
 	}
-	
+
 	public boolean isSuperUser() {
-		
-		return this.authorization.equals(Auth.ADMIN) || this.authorization.equals(Auth.BOTH); 
-				
+
+		return this.authorization.equals(Auth.ADMIN) || this.authorization.equals(Auth.BOTH);
+
 	}
-	
+
 	public Auth getAuthorization() {
 		return authorization;
 	}
+
 	@Override
 	public String toString() {
 		return "[" + id + ":" + password + ", " + authorization.toString() + "]";

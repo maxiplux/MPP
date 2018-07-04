@@ -18,11 +18,11 @@ final public class Book implements Serializable {
 	public String isbn;
 	public String title;
 	public int maxCheckoutLength;
-	
-	public Book()
-	{
-		
+
+	public Book() {
+
 	}
+
 	public Book(String isbn, String title, int maxCheckoutLength, List<Author> authors) {
 		this.isbn = isbn;
 		this.title = title;
@@ -51,11 +51,13 @@ final public class Book implements Serializable {
 
 	}
 
-	public void addCopy() {
+	public BookCopy addCopy() {
 		BookCopy[] newArr = new BookCopy[copies.length + 1];
 		System.arraycopy(copies, 0, newArr, 0, copies.length);
-		newArr[copies.length] = new BookCopy(this, copies.length + 1, true);
+		BookCopy new_object = new BookCopy(this, copies.length + 1, true);
+		newArr[copies.length] = new_object;
 		copies = newArr;
+		return new_object;
 	}
 
 	@Override
@@ -72,7 +74,7 @@ final public class Book implements Serializable {
 		if (copies == null) {
 			return false;
 		}
-		return Arrays.stream(copies).map(l -> l.isAvailable()).reduce(false, (x, y) -> x || y);
+		return Arrays.stream(copies).map(l -> l.getisAvailable()).reduce(false, (x, y) -> x || y);
 	}
 
 	@Override
@@ -91,9 +93,9 @@ final public class Book implements Serializable {
 	public BookCopy[] getCopies() {
 		return copies;
 	}
-	
+
 	public boolean hasCopies() {
-		return copies!=null;
+		return copies != null;
 	}
 
 	public List<Author> getAuthors() {
@@ -105,7 +107,7 @@ final public class Book implements Serializable {
 	}
 
 	public BookCopy getNextAvailableCopy() {
-		Optional<BookCopy> optional = Arrays.stream(copies).filter(x -> x.isAvailable()).findFirst();
+		Optional<BookCopy> optional = Arrays.stream(copies).filter(x -> x.getisAvailable()).findFirst();
 		return optional.isPresent() ? optional.get() : null;
 	}
 

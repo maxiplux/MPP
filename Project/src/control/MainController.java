@@ -1,12 +1,11 @@
 package control;
 
-import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.domain.User;
 
@@ -42,12 +41,11 @@ public class MainController implements Initializable {
 				e.printStackTrace();
 			}
 		});
-		
+
 		btnBooks.setOnAction((event) -> {
-			
+
 		});
 
-		
 		btnLibraryMembers.setOnAction((event) -> {
 			System.out.println("btnLibraryMembers");
 

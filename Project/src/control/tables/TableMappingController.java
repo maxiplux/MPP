@@ -25,23 +25,12 @@ import model.domain.Book;
 public class TableMappingController implements Initializable {
 	private Book book;
 	private Stage primaryStage;
+
 	public TableMappingController(Stage primaryStage) {
-		
-		this.primaryStage = primaryStage;
-	}
-	
-	public void setBook(Book book) {
-		this.book = book;
-	}
 
-	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}
 
-	
-	
-	
-	
 	// The table and columns
 	@FXML
 	TableView<Book> itemTbl;
@@ -72,23 +61,21 @@ public class TableMappingController implements Initializable {
 		}
 
 		itemTbl.setItems(data);
-		
+
 		itemTbl.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-		    if (newSelection != null) 
-		    {
-		    	
-		    	System.out.println(newSelection);
-		    	BookCopyController bookcontroller = new BookCopyController(newSelection);
-		    	try {
+			if (newSelection != null) {
+
+				System.out.println(newSelection);
+				System.out.println("sending selection");
+				BookCopyController bookcontroller = new BookCopyController(newSelection);
+				try {
 					bookcontroller.start(this.primaryStage);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		    	
-		        
-		        
-		    }
+
+			}
 		});
 
 	}

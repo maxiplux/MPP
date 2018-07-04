@@ -1,4 +1,5 @@
 package model.dataaccess;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -13,64 +14,62 @@ import model.domain.Book;
 import model.domain.LibraryMember;
 import model.domain.User;
 
-
 public class DataAccessFacade implements DataAccess {
 
 	enum StorageType {
 		BOOKS, MEMBERS, USERS;
 	}
 
-	public static final String OUTPUT_DIR = System.getProperty("user.dir")
-			+ "\\src\\model\\dataaccess\\storage";
+	public static final String OUTPUT_DIR = System.getProperty("user.dir") + "\\src\\model\\dataaccess\\storage";
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 
-	//implement: other save operations
+	// implement: other save operations
 	public void saveNewMember(LibraryMember member) {
 		HashMap<String, LibraryMember> mems = readMemberMap();
 		String memberId = member.getMemberId();
 		mems.put(memberId, member);
 		saveToStorage(StorageType.MEMBERS, mems);
 	}
-	
+
 	public void saveAbook(Book bk) {
-		List<Book> bks=new ArrayList<Book>();
-			bks.add(bk);
-		 loadBookMap(bks);
+		List<Book> bks = new ArrayList<Book>();
+		bks.add(bk);
+		loadBookMap(bks);
 	}
 
 	@SuppressWarnings("unchecked")
-	public  HashMap<String,Book> readBooksMap() {
-		//Returns a Map with name/value pairs being
-		//   isbn -> Book
-		return (HashMap<String,Book>) readFromStorage(StorageType.BOOKS);
+	public HashMap<String, Book> readBooksMap() {
+		// Returns a Map with name/value pairs being
+		// isbn -> Book
+		return (HashMap<String, Book>) readFromStorage(StorageType.BOOKS);
 	}
 
 	@SuppressWarnings("unchecked")
 	public HashMap<String, LibraryMember> readMemberMap() {
-		//Returns a Map with name/value pairs being
-		//   memberId -> LibraryMember
-		return (HashMap<String, LibraryMember>) readFromStorage(
-				StorageType.MEMBERS);
+		// Returns a Map with name/value pairs being
+		// memberId -> LibraryMember
+		return (HashMap<String, LibraryMember>) readFromStorage(StorageType.MEMBERS);
 	}
-
 
 	@SuppressWarnings("unchecked")
 	public HashMap<String, User> readUserMap() {
-		//Returns a Map with name/value pairs being
-		//   userId -> User
-		return (HashMap<String, User>)readFromStorage(StorageType.USERS);
+		// Returns a Map with name/value pairs being
+		// userId -> User
+		return (HashMap<String, User>) readFromStorage(StorageType.USERS);
 	}
 
-
-	/////load methods - these place test data into the storage area
+	///// load methods - these place test data into the storage area
 	///// - used just once at startup
-	//static void loadMemberMap(List<LibraryMember> memberList) {
+	// static void loadMemberMap(List<LibraryMember> memberList) {
 
 	static void loadBookMap(List<Book> bookList) {
-		HashMap<String, Book> books = new HashMap<String, Book>();
+		// we need load informatoon on disk before do anything copyleft francisco
+		HashMap<String, Book> books = (HashMap<String, Book>) readFromStorage(StorageType.BOOKS);
+
 		bookList.forEach(book -> books.put(book.getIsbn(), book));
 		saveToStorage(StorageType.BOOKS, books);
 	}
+
 	static void loadUserMap(List<User> userList) {
 		HashMap<String, User> users = new HashMap<String, User>();
 		userList.forEach(user -> users.put(user.getId(), user));
@@ -89,13 +88,14 @@ public class DataAccessFacade implements DataAccess {
 			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, type.toString());
 			out = new ObjectOutputStream(Files.newOutputStream(path));
 			out.writeObject(ob);
-		} catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			if(out != null) {
+			if (out != null) {
 				try {
 					out.close();
-				} catch(Exception e) {}
+				} catch (Exception e) {
+				}
 			}
 		}
 	}
@@ -107,14 +107,15 @@ public class DataAccessFacade implements DataAccess {
 			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, type.toString());
 			in = new ObjectInputStream(Files.newInputStream(path));
 			retVal = in.readObject();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("Bug when reading Member file");
 			e.printStackTrace();
 		} finally {
-			if(in != null) {
+			if (in != null) {
 				try {
 					in.close();
-				} catch(Exception e) {}
+				} catch (Exception e) {
+				}
 			}
 		}
 		return retVal;

@@ -5,13 +5,12 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.dataaccess.DataAccess;
 import model.dataaccess.DataAccessFacade;
@@ -27,10 +26,10 @@ public class CheckoutController extends Application {
 	private User user;
 	private Stage primaryStage;
 
-//	@FXML
-//	TextField memberId;
-//	@FXML
-//	TextField txtIsbn;
+	// @FXML
+	// TextField memberId;
+	// @FXML
+	// TextField txtIsbn;
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -40,8 +39,8 @@ public class CheckoutController extends Application {
 		stage.setTitle("FXML Welcome");
 		stage.setScene(new Scene(root, 300, 200));
 
-		 TextField memberId = (TextField) root.lookup("#memberId");
-		 TextField txtIsbn = (TextField) root.lookup("#txtIsbn");
+		TextField memberId = (TextField) root.lookup("#memberId");
+		TextField txtIsbn = (TextField) root.lookup("#txtIsbn");
 
 		Button btnBack = (Button) root.lookup("#btnBack");
 		btnBack.setOnAction((event) -> {

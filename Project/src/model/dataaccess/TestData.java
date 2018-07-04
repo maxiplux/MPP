@@ -1,6 +1,5 @@
 package model.dataaccess;
 
-import java.io.ObjectStreamClass;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -11,15 +10,12 @@ import model.domain.Address;
 import model.domain.Author;
 import model.domain.Book;
 import model.domain.BookCopy;
-import model.domain.CheckoutRecordEntry;
 import model.domain.LibraryMember;
 import model.domain.User;
-
 
 public class TestData {
 	List<LibraryMember> members = new ArrayList<LibraryMember>();
 	@SuppressWarnings("serial")
-
 
 	List<Address> addresses = new ArrayList<Address>() {
 		{
@@ -44,8 +40,6 @@ public class TestData {
 		}
 	};
 
-
-
 	@SuppressWarnings("serial")
 	List<Book> allBooks = new ArrayList<Book>() {
 		{
@@ -56,8 +50,6 @@ public class TestData {
 
 		}
 	};
-
-
 
 	@SuppressWarnings("serial")
 	List<User> allUsers = new ArrayList<User>() {
@@ -76,11 +68,12 @@ public class TestData {
 		DataAccess da = new DataAccessFacade();
 		System.out.println(da.readBooksMap());
 		System.out.println(da.readUserMap());
-		
-		//additional data
+
+		// additional data
 		td.libraryMemberBookCopyData();
 	}
-	///create books
+
+	/// create books
 	public void bookData() {
 		allBooks.get(0).addCopy();
 		allBooks.get(0).addCopy();
@@ -95,9 +88,7 @@ public class TestData {
 		DataAccessFacade.loadUserMap(allUsers);
 	}
 
-
-
-	//create library members
+	// create library members
 
 	public void libraryMemberData() {
 		LibraryMember libraryMember = new LibraryMember("1", "Andy", "Rogers", "641-223-2211", addresses.get(4));
@@ -112,17 +103,15 @@ public class TestData {
 		members.add(libraryMember);
 
 		DataAccessFacade.loadMemberMap(members);
-		
 
 	}
-	
+
 	public void libraryMemberBookCopyData() {
 		BookCopy bc = allBooks.get(0).getCopies()[0];
-		members.get(0).addCheckoutRecordEntry(bc, LocalDate.now() , LocalDate.now().minus(1, ChronoUnit.DAYS));
+		members.get(0).addCheckoutRecordEntry(bc, LocalDate.now(), LocalDate.now().minus(1, ChronoUnit.DAYS));
 
 		DataAccessFacade.loadMemberMap(members);
 
 	}
-
 
 }

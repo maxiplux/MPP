@@ -21,9 +21,8 @@ final public class LibraryMember extends Person implements Serializable {
 	public List<CheckoutRecordEntry> getCheckoutRecordEntries() {
 		return checkoutRecordEntries;
 	}
-	
-	public CheckoutRecordEntry addCheckoutRecordEntry(BookCopy bookcopy, LocalDate checkoutDate, LocalDate dueDate)
-	{
+
+	public CheckoutRecordEntry addCheckoutRecordEntry(BookCopy bookcopy, LocalDate checkoutDate, LocalDate dueDate) {
 		CheckoutRecordEntry cre = new CheckoutRecordEntry(bookcopy, checkoutDate, dueDate);
 		this.checkoutRecordEntries.add(cre);
 		return cre;
@@ -34,8 +33,6 @@ final public class LibraryMember extends Person implements Serializable {
 		return "Member Info: " + "ID: " + memberId + ", name: " + getFirstName() + " " + getLastName() + ", "
 				+ getTelephone() + " " + getAddress();
 	}
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -61,8 +58,6 @@ final public class LibraryMember extends Person implements Serializable {
 			return false;
 		return true;
 	}
-
-
 
 	private static final long serialVersionUID = -2226197306790714013L;
 }
