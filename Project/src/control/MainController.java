@@ -6,8 +6,11 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import model.dataaccess.Auth;
 import model.domain.User;
+import util.Util;
 
 public class MainController implements Initializable {
 	private User user;
@@ -33,6 +36,10 @@ public class MainController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		btnCheckoutBooks.setOnAction((event) -> {
+			if (user.getAuthorization().equals(Auth.ADMIN)) {
+				Util.showAlert("Administrator can not checkout books", "Permission denied", AlertType.ERROR);
+				return;
+			}
 			CheckoutController checkoutcontroller = new CheckoutController();
 			try {
 				checkoutcontroller.start(this.primaryStage);
@@ -43,19 +50,17 @@ public class MainController implements Initializable {
 		});
 
 		btnBooks.setOnAction((event) -> {
-			BookController bookcontroller = new BookController(this.user);
-			try {
-				bookcontroller.start(this.primaryStage);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if (user.getAuthorization().equals(Auth.LIBRARIAN)) {
+				Util.showAlert("Librarian cannot add Books", "Permission denied", AlertType.ERROR);
+				return;
 			}
-
-			
-
 		});
 
 		btnLibraryMembers.setOnAction((event) -> {
+			if (user.getAuthorization().equals(Auth.LIBRARIAN)) {
+				Util.showAlert("Librarian cannot add Member", "Permission denied", AlertType.ERROR);
+				return;
+			}
 			System.out.println("btnLibraryMembers");
 
 			LibraryMemberController librarymember = new LibraryMemberController();
