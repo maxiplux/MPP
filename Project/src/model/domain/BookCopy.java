@@ -1,6 +1,13 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import model.dataaccess.DataAccessFacade;
 
 /**
  * Immutable class
@@ -57,6 +64,38 @@ final public class BookCopy implements Serializable {
 
 	public boolean getisAvailable() {
 		return isAvailable;
+	}
+	
+	public CheckoutRecordEntry getCopyCheckoutRecordEntry()
+	{
+		DataAccessFacade daf = new DataAccessFacade();
+		HashMap<String, LibraryMember> mems = daf.readMemberMap();
+		Set<Entry<String, LibraryMember>> memberSet = mems.entrySet();
+		for (Entry<String, LibraryMember> lm : memberSet) {
+			LibraryMember mem = lm.getValue();
+			for(CheckoutRecordEntry cre : mem.getCheckoutRecordEntries())
+			{
+				if(cre.getBookcopy().equals(this))
+				{
+					return cre;
+				}
+			}
+		}
+		return null;
+	}
+
+	public String getOverdue() {
+		CheckoutRecordEntry result = getCopyCheckoutRecordEntry();
+		if(result == null ) return "";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/LLLL/yyyy");
+		String date = result.getDueDate().format(formatter);
+		return result.getDueDate().compareTo(LocalDate.now()) < 0 ? "YES: " : "On " + date;
+	}
+
+	public String getPossesion() {
+		CheckoutRecordEntry result = getCopyCheckoutRecordEntry();
+		if(result == null ) return "";
+		return result.getMember().getMemberId() + " - " + result.getMember().getFirstName() +" " + result.getMember().getLastName() ;
 	}
 
 	@Override

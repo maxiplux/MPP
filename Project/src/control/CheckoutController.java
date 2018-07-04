@@ -23,28 +23,27 @@ import util.Util;
 import view.MainWindow;
 
 public class CheckoutController extends Application {
-	
+
 	private User user;
-	public CheckoutController(User user)
-	{
-		this.user=user;
+
+	public CheckoutController(User user) {
+		this.user = user;
 	}
-	
+
 	protected static CheckoutRecordEntry checkoutABook(String userId, String isbn) {
 		DataAccess db = new DataAccessFacade();
 		HashMap<String, LibraryMember> memMap = db.readMemberMap();
 		LibraryMember mb = memMap.get(userId);
 		if (mb == null) {
-			Util.showAlert("Member does not exist", "Not data found", AlertType.ERROR);
+			Util.showAlert("fember does not exist", "Not data found", AlertType.ERROR);
 		}
 
 		HashMap<String, Book> bookMap = db.readBooksMap();
 		Book bk = bookMap.get(isbn);
-		if (bk == null || !bk.isAvailable()) {
+		if (bk == null) {
 			Util.showAlert("Book does not exist", "Not data found", AlertType.ERROR);
-		}
-
-		else {
+		} else {
+			System.out.println("Procceed checkout book");
 			BookCopy bc = bk.getNextAvailableCopy();
 
 			CheckoutRecordEntry cre = mb.addCheckoutRecordEntry(bc, LocalDate.now(),
@@ -56,16 +55,10 @@ public class CheckoutController extends Application {
 		}
 		return null;
 	}
+
 	public static void main(String[] args) {
 		Application.launch(CheckoutController.class, args);
 	}
-
-	// @FXML
-	// TextField memberId;
-	// @FXML
-	// TextField txtIsbn;
-
-	
 
 	private Stage primaryStage;
 
@@ -80,17 +73,15 @@ public class CheckoutController extends Application {
 		TextField memberId = (TextField) root.lookup("#memberId");
 		TextField txtIsbn = (TextField) root.lookup("#txtIsbn");
 
-		
 		Button btnBack = (Button) root.lookup("#btnBack");
-		
-		
+
 		btnBack.setOnAction((event) -> {
-			
+
 			MainWindow mainWindow = new MainWindow(user);
-			
-			try {				
+
+			try {
 				mainWindow.start(this.primaryStage);
-				
+
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -113,7 +104,7 @@ public class CheckoutController extends Application {
 			}
 
 			if (badmember) {
-				Util.showAlert("Member Id No found", "Not data found", AlertType.WARNING);
+				Util.showAlert("Member Id Not found", "Not data found", AlertType.WARNING);
 				return;
 			}
 
@@ -127,32 +118,28 @@ public class CheckoutController extends Application {
 			}
 
 			if (badisbn) {
-				Util.showAlert("Request book is not found", "Not data found", AlertType.WARNING);
+				Util.showAlert("Book Isbn No found", "Not data found", AlertType.WARNING);
 				return;
-			}
-			
-			
-			else {
-				if (temp_book.isAvailable()) 
-				{
-					
+			} else {
+				if (temp_book.isAvailable()) {
+
 					CheckoutRecordEntry cre = checkoutABook(memberId.getText(), txtIsbn.getText());
-					CheckoutRecordEntrySuccessController checkoutrecordentrysuccess = new CheckoutRecordEntrySuccessController(cre,this.user);
-					
+					CheckoutRecordEntrySuccessController checkoutrecordentrysuccess = new CheckoutRecordEntrySuccessController(
+							cre, this.user);
+
 					try {
 						checkoutrecordentrysuccess.start(stage);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
+
+					return;
+				} else {
+					Util.showAlert("No available copy for the book", "Not data found", AlertType.ERROR);
 					return;
 				}
 			}
-			
-
-			// Util.showAlert("All is good", "All is good", AlertType.INFORMATION);
-
 		});
 
 		stage.show();

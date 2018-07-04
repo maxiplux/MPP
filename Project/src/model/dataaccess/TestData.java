@@ -24,7 +24,7 @@ public class TestData {
 		System.out.println(da.readUserMap());
 
 		// additional data
-		td.libraryMemberBookCopyData();
+//		td.libraryMemberBookCopyData();
 	}
 	List<LibraryMember> members = new ArrayList<LibraryMember>();
 	@SuppressWarnings("serial")
