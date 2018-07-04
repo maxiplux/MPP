@@ -65,8 +65,11 @@ public class TableMappingController implements Initializable {
 		itemIsbn.setCellValueFactory(new PropertyValueFactory<Book, String>("isbn"));
 		itemName.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
 		itemCheckoutDate.setCellValueFactory(new PropertyValueFactory<Book, Integer>("maxCheckoutLength"));
+		
 		data = FXCollections.observableArrayList();
+		
 		DataAccess db = new DataAccessFacade();
+		
 		HashMap<String, Book> books = db.readBooksMap();
 		for (Entry<String, Book> entry : books.entrySet()) {
 			data.add(entry.getValue());

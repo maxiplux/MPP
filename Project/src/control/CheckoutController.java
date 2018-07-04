@@ -24,6 +24,12 @@ import view.MainWindow;
 
 public class CheckoutController extends Application {
 	
+	private User user;
+	public CheckoutController(User user)
+	{
+		this.user=user;
+	}
+	
 	protected static CheckoutRecordEntry checkoutABook(String userId, String isbn) {
 		DataAccess db = new DataAccessFacade();
 		HashMap<String, LibraryMember> memMap = db.readMemberMap();
@@ -59,7 +65,7 @@ public class CheckoutController extends Application {
 	// @FXML
 	// TextField txtIsbn;
 
-	private User user;
+	
 
 	private Stage primaryStage;
 
@@ -74,11 +80,17 @@ public class CheckoutController extends Application {
 		TextField memberId = (TextField) root.lookup("#memberId");
 		TextField txtIsbn = (TextField) root.lookup("#txtIsbn");
 
+		
 		Button btnBack = (Button) root.lookup("#btnBack");
+		
+		
 		btnBack.setOnAction((event) -> {
+			
 			MainWindow mainWindow = new MainWindow(user);
-			try {
+			
+			try {				
 				mainWindow.start(this.primaryStage);
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -121,9 +133,9 @@ public class CheckoutController extends Application {
 			else {
 				if (temp_book.isAvailable()) 
 				{
-					Util.showAlert("Book is avaible in this moment ", "found", AlertType.INFORMATION);
+					
 					CheckoutRecordEntry cre = checkoutABook(memberId.getText(), txtIsbn.getText());
-					CheckoutRecordEntrySuccessController checkoutrecordentrysuccess = new CheckoutRecordEntrySuccessController(cre);
+					CheckoutRecordEntrySuccessController checkoutrecordentrysuccess = new CheckoutRecordEntrySuccessController(cre,this.user);
 					
 					try {
 						checkoutrecordentrysuccess.start(stage);
