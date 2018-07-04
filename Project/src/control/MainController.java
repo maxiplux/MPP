@@ -54,6 +54,14 @@ public class MainController implements Initializable {
 				Util.showAlert("Librarian cannot add Books", "Permission denied", AlertType.ERROR);
 				return;
 			}
+			
+			CheckoutController cc = new CheckoutController();
+			try {
+				cc.start(this.primaryStage);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		});
 
 		btnLibraryMembers.setOnAction((event) -> {
