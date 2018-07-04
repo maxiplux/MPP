@@ -10,9 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="302.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="control.LoginController"
->
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="302.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.LoginController">
    <children>
       <GridPane layoutX="38.0" layoutY="13.0" prefHeight="140.0" prefWidth="227.0">
         <columnConstraints>
@@ -27,14 +25,14 @@ fx:controller="control.LoginController"
          <children>
             <VBox alignment="CENTER" prefHeight="131.0" prefWidth="84.0" spacing="5.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Id" />
+                  <Label text="ID" />
                   <Label text="Password" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="131.0" prefWidth="84.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextField id="userId" fx:id="userId" />
-                  <PasswordField id="txtPassword" fx:id="txtPassword" />
+                  <TextField id="userId" fx:id="userId" text="103" />
+                  <PasswordField id="txtPassword" fx:id="txtPassword" text="111" />
                </children>
             </VBox>
             <Button id="btnLogin" fx:id="btnLogin" mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2" />
