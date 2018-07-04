@@ -12,18 +12,11 @@ final public class BookCopy implements Serializable {
 	private int copyNum;
 	private String exists;
 
-	public String getExists() {
-		return this.Available();
-	}
-
 	private boolean isAvailable;
 
-	public String Available() {
-		return isAvailable ? "Yes" : "No";
-	}
-
-	public boolean getisAvailable() {
-		return isAvailable;
+	BookCopy(Book book, int copyNum) {
+		this.book = book;
+		this.copyNum = copyNum;
 	}
 
 	BookCopy(Book book, int copyNum, boolean isAvailable) {
@@ -32,17 +25,8 @@ final public class BookCopy implements Serializable {
 		this.isAvailable = isAvailable;
 	}
 
-	BookCopy(Book book, int copyNum) {
-		this.book = book;
-		this.copyNum = copyNum;
-	}
-
-	public int getCopyNum() {
-		return copyNum;
-	}
-
-	public String getBook() {
-		return book.getIsbn();
+	public String Available() {
+		return isAvailable ? "Yes" : "No";
 	}
 
 	public void changeAvailability() {
@@ -57,6 +41,22 @@ final public class BookCopy implements Serializable {
 			return false;
 		BookCopy copy = (BookCopy) ob;
 		return copy.book.getIsbn().equals(book.getIsbn()) && copy.copyNum == copyNum;
+	}
+
+	public String getBook() {
+		return book.getIsbn();
+	}
+
+	public int getCopyNum() {
+		return copyNum;
+	}
+
+	public String getExists() {
+		return this.Available();
+	}
+
+	public boolean getisAvailable() {
+		return isAvailable;
 	}
 
 	@Override

@@ -23,13 +23,44 @@ import util.Util;
 import view.MainWindow;
 
 public class CheckoutController extends Application {
-	private User user;
-	private Stage primaryStage;
+	protected static CheckoutRecordEntry checkoutABook(String userId, String isbn) {
+		DataAccess db = new DataAccessFacade();
+		HashMap<String, LibraryMember> memMap = db.readMemberMap();
+		LibraryMember mb = memMap.get(userId);
+		if (mb == null) {
+			Util.showAlert("Member does not exist", "Not data found", AlertType.ERROR);
+		}
+
+		HashMap<String, Book> bookMap = db.readBooksMap();
+		Book bk = bookMap.get(isbn);
+		if (bk == null || !bk.isAvailable()) {
+			Util.showAlert("Book does not exist", "Not data found", AlertType.ERROR);
+		}
+
+		else {
+			BookCopy bc = bk.getNextAvailableCopy();
+
+			CheckoutRecordEntry cre = mb.addCheckoutRecordEntry(bc, LocalDate.now(),
+					LocalDate.now().plusDays(bk.getMaxCheckoutLength()));
+			bc.changeAvailability();
+			db.saveNewMember(mb);
+			db.saveAbook(bk);
+			return cre;
+		}
+		return null;
+	}
+	public static void main(String[] args) {
+		Application.launch(CheckoutController.class, args);
+	}
 
 	// @FXML
 	// TextField memberId;
 	// @FXML
 	// TextField txtIsbn;
+
+	private User user;
+
+	private Stage primaryStage;
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -98,36 +129,5 @@ public class CheckoutController extends Application {
 		});
 
 		stage.show();
-	}
-
-	protected static CheckoutRecordEntry checkoutABook(String userId, String isbn) {
-		DataAccess db = new DataAccessFacade();
-		HashMap<String, LibraryMember> memMap = db.readMemberMap();
-		LibraryMember mb = memMap.get(userId);
-		if (mb == null) {
-			Util.showAlert("Member does not exist", "Not data found", AlertType.ERROR);
-		}
-
-		HashMap<String, Book> bookMap = db.readBooksMap();
-		Book bk = bookMap.get(isbn);
-		if (bk == null || !bk.isAvailable()) {
-			Util.showAlert("Book does not exist", "Not data found", AlertType.ERROR);
-		}
-
-		else {
-			BookCopy bc = bk.getNextAvailableCopy();
-
-			CheckoutRecordEntry cre = mb.addCheckoutRecordEntry(bc, LocalDate.now(),
-					LocalDate.now().plusDays(bk.getMaxCheckoutLength()));
-			bc.changeAvailability();
-			db.saveNewMember(mb);
-			db.saveAbook(bk);
-			return cre;
-		}
-		return null;
-	}
-
-	public static void main(String[] args) {
-		Application.launch(CheckoutController.class, args);
 	}
 }

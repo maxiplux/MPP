@@ -7,11 +7,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="405.0" prefWidth="613.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-
->
+<AnchorPane id="AnchorPane" prefHeight="405.0" prefWidth="613.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <Button fx:id="btnCopies" layoutX="513.0" layoutY="366.0"  text="ViewCopies"   />
     <Label fx:id="label" layoutX="126.0" layoutY="120.0" minHeight="16.0" minWidth="69.0" />
     <TableView fx:id="itemTbl" layoutX="14.0" layoutY="43.0" prefHeight="314.0" prefWidth="586.0">
       <columns>
@@ -25,6 +22,6 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="btnBack" layoutX="466.0" layoutY="366.0"  text="Back" />
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="16.0" text="Back" />
   </children>
 </AnchorPane>

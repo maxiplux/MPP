@@ -43,6 +43,15 @@ public class MainController implements Initializable {
 		});
 
 		btnBooks.setOnAction((event) -> {
+			BookController bookcontroller = new BookController(this.user);
+			try {
+				bookcontroller.start(this.primaryStage);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			
 
 		});
 

@@ -10,6 +10,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,19 +19,19 @@ import javafx.stage.Stage;
 import model.dataaccess.DataAccess;
 import model.dataaccess.DataAccessFacade;
 import model.domain.Book;
-
+import model.domain.User;
+import util.Util;
+import view.MainWindow;
 /**
  *
  * @author ericjbruno
  */
 public class TableMappingController implements Initializable {
+	static long nextId = 1;
 	private Book book;
+	private User user;
+
 	private Stage primaryStage;
-
-	public TableMappingController(Stage primaryStage) {
-
-		this.primaryStage = primaryStage;
-	}
 
 	// The table and columns
 	@FXML
@@ -41,9 +43,20 @@ public class TableMappingController implements Initializable {
 	TableColumn itemName;
 	@FXML
 	TableColumn itemCheckoutDate;
-
+	
+	@FXML
+	Button btnBack;
 	// The table's data
 	ObservableList<Book> data;
+
+	public TableMappingController(Stage primaryStage,User user) {
+		if (primaryStage==null)
+		{
+			Util.showAlert("Stage null", "Stage null", AlertType.ERROR);
+		}
+		this.user=user;		
+		this.primaryStage = primaryStage;
+	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -61,14 +74,27 @@ public class TableMappingController implements Initializable {
 		}
 
 		itemTbl.setItems(data);
+		
+		 
+		btnBack.setOnAction((event) -> {
+			MainWindow mainWindow = new MainWindow(user);
+			try {
+				mainWindow.start(this.primaryStage);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+		
 
 		itemTbl.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
 
-				System.out.println(newSelection);
-				System.out.println("sending selection");
-				BookCopyController bookcontroller = new BookCopyController(newSelection);
+				
+				BookCopyController bookcontroller = new BookCopyController(newSelection,this.user);
 				try {
+					
+				
 					bookcontroller.start(this.primaryStage);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
@@ -79,7 +105,5 @@ public class TableMappingController implements Initializable {
 		});
 
 	}
-
-	static long nextId = 1;
 
 }

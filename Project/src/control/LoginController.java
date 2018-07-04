@@ -18,9 +18,14 @@ import util.Util;
 import view.MainWindow;
 
 public class LoginController extends Application {
-	private boolean userOrIdWrong = true;
+	public static void main(String[] args) {
 
+		Application.launch(LoginController.class, args);
+	}
+
+	private boolean userOrIdWrong = true;
 	private MainController secondWindow;
+
 	private Stage primaryStage;
 
 	@Override
@@ -69,11 +74,6 @@ public class LoginController extends Application {
 
 		stage.show();
 
-	}
-
-	public static void main(String[] args) {
-
-		Application.launch(LoginController.class, args);
 	}
 
 }

@@ -32,25 +32,6 @@ final public class Book implements Serializable {
 
 	}
 
-	public void updateCopies(BookCopy copy) {
-		for (int i = 0; i < copies.length; ++i) {
-			BookCopy c = copies[i];
-			if (c.equals(copy)) {
-				copies[i] = copy;
-
-			}
-		}
-	}
-
-	public List<Integer> getCopyNums() {
-		List<Integer> retVal = new ArrayList<>();
-		for (BookCopy c : copies) {
-			retVal.add(c.getCopyNum());
-		}
-		return retVal;
-
-	}
-
 	public BookCopy addCopy() {
 		BookCopy[] newArr = new BookCopy[copies.length + 1];
 		System.arraycopy(copies, 0, newArr, 0, copies.length);
@@ -70,6 +51,57 @@ final public class Book implements Serializable {
 		return b.isbn.equals(isbn);
 	}
 
+	public List<Author> getAuthors() {
+		return authors;
+	}
+
+	public BookCopy[] getCopies() {
+		return copies;
+	}
+
+	public BookCopy getCopy(int copyNum) {
+		for (BookCopy c : copies) {
+			if (copyNum == c.getCopyNum()) {
+				return c;
+			}
+		}
+		return null;
+	}
+
+	public List<Integer> getCopyNums() {
+		List<Integer> retVal = new ArrayList<>();
+		for (BookCopy c : copies) {
+			retVal.add(c.getCopyNum());
+		}
+		return retVal;
+
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public int getMaxCheckoutLength() {
+		return maxCheckoutLength;
+	}
+
+	public BookCopy getNextAvailableCopy() {
+		Optional<BookCopy> optional = Arrays.stream(copies).filter(x -> x.getisAvailable()).findFirst();
+		return optional.isPresent() ? optional.get() : null;
+	}
+
+	public int getNumCopies() {
+		return copies.length;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public boolean hasCopies() {
+		return copies != null;
+	}
+
 	public boolean isAvailable() {
 		if (copies == null) {
 			return false;
@@ -82,46 +114,14 @@ final public class Book implements Serializable {
 		return "isbn: " + isbn + ", maxLength: " + maxCheckoutLength + ", available: " + isAvailable();
 	}
 
-	public int getNumCopies() {
-		return copies.length;
-	}
+	public void updateCopies(BookCopy copy) {
+		for (int i = 0; i < copies.length; ++i) {
+			BookCopy c = copies[i];
+			if (c.equals(copy)) {
+				copies[i] = copy;
 
-	public String getTitle() {
-		return title;
-	}
-
-	public BookCopy[] getCopies() {
-		return copies;
-	}
-
-	public boolean hasCopies() {
-		return copies != null;
-	}
-
-	public List<Author> getAuthors() {
-		return authors;
-	}
-
-	public String getIsbn() {
-		return isbn;
-	}
-
-	public BookCopy getNextAvailableCopy() {
-		Optional<BookCopy> optional = Arrays.stream(copies).filter(x -> x.getisAvailable()).findFirst();
-		return optional.isPresent() ? optional.get() : null;
-	}
-
-	public BookCopy getCopy(int copyNum) {
-		for (BookCopy c : copies) {
-			if (copyNum == c.getCopyNum()) {
-				return c;
 			}
 		}
-		return null;
-	}
-
-	public int getMaxCheckoutLength() {
-		return maxCheckoutLength;
 	}
 
 }

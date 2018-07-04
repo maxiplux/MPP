@@ -17,20 +17,19 @@ import model.dataaccess.DataAccess;
 import model.dataaccess.DataAccessFacade;
 import model.domain.Book;
 import model.domain.BookCopy;
+import model.domain.User;
+import view.MainWindow;
 
 /**
  *
  * @author ericjbruno
  */
 public class TableMappingBookCopyController implements Initializable {
+	static long nextId = 1;
+	private User user;
 	private Stage primaryStage;
-	Book book;
 
-	public TableMappingBookCopyController(Book book, Stage primaryStage) {
-		super();
-		this.book = book;
-		this.primaryStage = primaryStage;
-	}
+	Book book;
 
 	// The table and columns
 	@FXML
@@ -43,9 +42,19 @@ public class TableMappingBookCopyController implements Initializable {
 
 	@FXML
 	Button btnnewCopy;
+	
+	@FXML
+	Button 	btnBack;
 
 	// The table's data
 	ObservableList<BookCopy> data;
+
+	public TableMappingBookCopyController(Book book, Stage primaryStage,User user) {
+		super();
+		this.book = book;
+		this.user=user;
+		this.primaryStage = primaryStage;
+	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -93,19 +102,19 @@ public class TableMappingBookCopyController implements Initializable {
 
 		});
 
-		btnnewCopy.setOnAction((event) -> {
+		btnBack.setOnAction((event) -> {
 
-			BookCopy bookcopy = this.book.addCopy();
-			data.add(bookcopy);
+			MainWindow secondWindow = new MainWindow(this.user);
 
-			db.saveAbook(this.book);
-
-			itemTbl.refresh();
+			try {
+				secondWindow.start(this.primaryStage);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		});
 
 	}
-
-	static long nextId = 1;
 
 }

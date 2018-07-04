@@ -23,19 +23,68 @@ public class DataAccessFacade implements DataAccess {
 	public static final String OUTPUT_DIR = System.getProperty("user.dir") + "\\src\\model\\dataaccess\\storage";
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 
-	// implement: other save operations
-	public void saveNewMember(LibraryMember member) {
-		HashMap<String, LibraryMember> mems = readMemberMap();
-		String memberId = member.getMemberId();
-		mems.put(memberId, member);
-		saveToStorage(StorageType.MEMBERS, mems);
+	static void loadBookMap(List<Book> bookList) {
+		// we need load informatoon on disk before do anything copyleft francisco
+		HashMap<String, Book> books = (HashMap<String, Book>) readFromStorage(StorageType.BOOKS);
+
+		bookList.forEach(book -> books.put(book.getIsbn(), book));
+		saveToStorage(StorageType.BOOKS, books);
 	}
 
-	public void saveAbook(Book bk) {
-		List<Book> bks = new ArrayList<Book>();
-		bks.add(bk);
-		loadBookMap(bks);
+	static void loadMemberMap(List<LibraryMember> memberList) {
+		HashMap<String, LibraryMember> members = new HashMap<String, LibraryMember>();
+		memberList.forEach(member -> members.put(member.getMemberId(), member));
+		saveToStorage(StorageType.MEMBERS, members);
 	}
+
+	static void loadUserMap(List<User> userList) {
+		HashMap<String, User> users = new HashMap<String, User>();
+		userList.forEach(user -> users.put(user.getId(), user));
+		saveToStorage(StorageType.USERS, users);
+	}
+
+	static Object readFromStorage(StorageType type) {
+		ObjectInputStream in = null;
+		Object retVal = null;
+		try {
+			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, type.toString());
+			in = new ObjectInputStream(Files.newInputStream(path));
+			retVal = in.readObject();
+		} catch (Exception e) {
+			System.out.println("Bug when reading Member file");
+			e.printStackTrace();
+		} finally {
+			if (in != null) {
+				try {
+					in.close();
+				} catch (Exception e) {
+				}
+			}
+		}
+		return retVal;
+	}
+
+	static void saveToStorage(StorageType type, Object ob) {
+		ObjectOutputStream out = null;
+		try {
+			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, type.toString());
+			out = new ObjectOutputStream(Files.newOutputStream(path));
+			out.writeObject(ob);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (out != null) {
+				try {
+					out.close();
+				} catch (Exception e) {
+				}
+			}
+		}
+	}
+
+	///// load methods - these place test data into the storage area
+	///// - used just once at startup
+	// static void loadMemberMap(List<LibraryMember> memberList) {
 
 	@SuppressWarnings("unchecked")
 	public HashMap<String, Book> readBooksMap() {
@@ -58,66 +107,17 @@ public class DataAccessFacade implements DataAccess {
 		return (HashMap<String, User>) readFromStorage(StorageType.USERS);
 	}
 
-	///// load methods - these place test data into the storage area
-	///// - used just once at startup
-	// static void loadMemberMap(List<LibraryMember> memberList) {
-
-	static void loadBookMap(List<Book> bookList) {
-		// we need load informatoon on disk before do anything copyleft francisco
-		HashMap<String, Book> books = (HashMap<String, Book>) readFromStorage(StorageType.BOOKS);
-
-		bookList.forEach(book -> books.put(book.getIsbn(), book));
-		saveToStorage(StorageType.BOOKS, books);
+	public void saveAbook(Book bk) {
+		List<Book> bks = new ArrayList<Book>();
+		bks.add(bk);
+		loadBookMap(bks);
 	}
 
-	static void loadUserMap(List<User> userList) {
-		HashMap<String, User> users = new HashMap<String, User>();
-		userList.forEach(user -> users.put(user.getId(), user));
-		saveToStorage(StorageType.USERS, users);
-	}
-
-	static void loadMemberMap(List<LibraryMember> memberList) {
-		HashMap<String, LibraryMember> members = new HashMap<String, LibraryMember>();
-		memberList.forEach(member -> members.put(member.getMemberId(), member));
-		saveToStorage(StorageType.MEMBERS, members);
-	}
-
-	static void saveToStorage(StorageType type, Object ob) {
-		ObjectOutputStream out = null;
-		try {
-			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, type.toString());
-			out = new ObjectOutputStream(Files.newOutputStream(path));
-			out.writeObject(ob);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (out != null) {
-				try {
-					out.close();
-				} catch (Exception e) {
-				}
-			}
-		}
-	}
-
-	static Object readFromStorage(StorageType type) {
-		ObjectInputStream in = null;
-		Object retVal = null;
-		try {
-			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, type.toString());
-			in = new ObjectInputStream(Files.newInputStream(path));
-			retVal = in.readObject();
-		} catch (Exception e) {
-			System.out.println("Bug when reading Member file");
-			e.printStackTrace();
-		} finally {
-			if (in != null) {
-				try {
-					in.close();
-				} catch (Exception e) {
-				}
-			}
-		}
-		return retVal;
+	// implement: other save operations
+	public void saveNewMember(LibraryMember member) {
+		HashMap<String, LibraryMember> mems = readMemberMap();
+		String memberId = member.getMemberId();
+		mems.put(memberId, member);
+		saveToStorage(StorageType.MEMBERS, mems);
 	}
 }

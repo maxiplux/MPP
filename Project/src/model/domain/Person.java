@@ -16,6 +16,10 @@ public class Person implements Serializable {
 		address = a;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -28,8 +32,8 @@ public class Person implements Serializable {
 		return telephone;
 	}
 
-	public Address getAddress() {
-		return address;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public void setFirstName(String firstName) {
@@ -42,9 +46,5 @@ public class Person implements Serializable {
 
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
 	}
 }

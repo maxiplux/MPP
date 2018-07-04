@@ -24,17 +24,21 @@ import model.domain.User;
 import view.MainWindow;
 
 public class LibraryMemberController extends Application {
+	public static void main(String[] args) {
+		Application.launch(LibraryMemberController.class, args);
+	}
 	private User user;
 	private Stage primaryStage;
 	private TextField txtFirtsName;
-	private TextField txtLastName;
 
+	private TextField txtLastName;
 	private TextField txtCity;
 	private Label txtmemberId;
 	private TextField txtState;
 	private TextField txtStreet;
 	private DataAccess db;
 	private TextField txtZip;
+
 	private TextField txtPhone;
 
 	public void setUser(String txtmemberId, String txtFirtsName, String txtLastName, String txtCity, String txtState,
@@ -138,9 +142,5 @@ public class LibraryMemberController extends Application {
 		});
 
 		stage.show();
-	}
-
-	public static void main(String[] args) {
-		Application.launch(LibraryMemberController.class, args);
 	}
 }

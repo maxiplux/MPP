@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 import model.domain.User;
 
 public class MainWindow extends Application {
+	public static void main(String[] args) {
+		Application.launch(MainWindow.class, args);
+	}
+
 	private User user;
 
 	public MainWindow(User user) {
@@ -24,9 +28,5 @@ public class MainWindow extends Application {
 		stage.setScene(new Scene(root.load(), 600, 275));
 
 		stage.show();
-	}
-
-	public static void main(String[] args) {
-		Application.launch(MainWindow.class, args);
 	}
 }

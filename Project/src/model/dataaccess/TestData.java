@@ -14,6 +14,18 @@ import model.domain.LibraryMember;
 import model.domain.User;
 
 public class TestData {
+	public static void main(String[] args) {
+		TestData td = new TestData();
+		td.bookData();
+		td.libraryMemberData();
+		td.userData();
+		DataAccess da = new DataAccessFacade();
+		System.out.println(da.readBooksMap());
+		System.out.println(da.readUserMap());
+
+		// additional data
+		td.libraryMemberBookCopyData();
+	}
 	List<LibraryMember> members = new ArrayList<LibraryMember>();
 	@SuppressWarnings("serial")
 
@@ -29,6 +41,7 @@ public class TestData {
 			add(new Address("501 Central", "Mountain View", "CA", "94707"));
 		}
 	};
+
 	@SuppressWarnings("serial")
 	public List<Author> allAuthors = new ArrayList<Author>() {
 		{
@@ -60,19 +73,6 @@ public class TestData {
 		}
 	};
 
-	public static void main(String[] args) {
-		TestData td = new TestData();
-		td.bookData();
-		td.libraryMemberData();
-		td.userData();
-		DataAccess da = new DataAccessFacade();
-		System.out.println(da.readBooksMap());
-		System.out.println(da.readUserMap());
-
-		// additional data
-		td.libraryMemberBookCopyData();
-	}
-
 	/// create books
 	public void bookData() {
 		allBooks.get(0).addCopy();
@@ -84,8 +84,12 @@ public class TestData {
 		DataAccessFacade.loadBookMap(allBooks);
 	}
 
-	public void userData() {
-		DataAccessFacade.loadUserMap(allUsers);
+	public void libraryMemberBookCopyData() {
+		BookCopy bc = allBooks.get(0).getCopies()[0];
+		members.get(0).addCheckoutRecordEntry(bc, LocalDate.now(), LocalDate.now().minus(1, ChronoUnit.DAYS));
+
+		DataAccessFacade.loadMemberMap(members);
+
 	}
 
 	// create library members
@@ -106,12 +110,8 @@ public class TestData {
 
 	}
 
-	public void libraryMemberBookCopyData() {
-		BookCopy bc = allBooks.get(0).getCopies()[0];
-		members.get(0).addCheckoutRecordEntry(bc, LocalDate.now(), LocalDate.now().minus(1, ChronoUnit.DAYS));
-
-		DataAccessFacade.loadMemberMap(members);
-
+	public void userData() {
+		DataAccessFacade.loadUserMap(allUsers);
 	}
 
 }

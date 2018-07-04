@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 final public class LibraryMember extends Person implements Serializable {
+	private static final long serialVersionUID = -2226197306790714013L;
 	private String memberId;
+
 	private List<CheckoutRecordEntry> checkoutRecordEntries = new ArrayList<>();
 
 	public LibraryMember(String memberId, String fname, String lname, String tel, Address add) {
@@ -14,32 +16,10 @@ final public class LibraryMember extends Person implements Serializable {
 		this.memberId = memberId;
 	}
 
-	public String getMemberId() {
-		return memberId;
-	}
-
-	public List<CheckoutRecordEntry> getCheckoutRecordEntries() {
-		return checkoutRecordEntries;
-	}
-
 	public CheckoutRecordEntry addCheckoutRecordEntry(BookCopy bookcopy, LocalDate checkoutDate, LocalDate dueDate) {
 		CheckoutRecordEntry cre = new CheckoutRecordEntry(bookcopy, checkoutDate, dueDate);
 		this.checkoutRecordEntries.add(cre);
 		return cre;
-	}
-
-	@Override
-	public String toString() {
-		return "Member Info: " + "ID: " + memberId + ", name: " + getFirstName() + " " + getLastName() + ", "
-				+ getTelephone() + " " + getAddress();
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((memberId == null) ? 0 : memberId.hashCode());
-		return result;
 	}
 
 	@Override
@@ -59,5 +39,25 @@ final public class LibraryMember extends Person implements Serializable {
 		return true;
 	}
 
-	private static final long serialVersionUID = -2226197306790714013L;
+	public List<CheckoutRecordEntry> getCheckoutRecordEntries() {
+		return checkoutRecordEntries;
+	}
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((memberId == null) ? 0 : memberId.hashCode());
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Member Info: " + "ID: " + memberId + ", name: " + getFirstName() + " " + getLastName() + ", "
+				+ getTelephone() + " " + getAddress();
+	}
 }

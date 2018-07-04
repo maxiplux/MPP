@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 
 public class TemplateController extends Application {
 
+	public static void main(String[] args) {
+		Application.launch(TemplateController.class, args);
+	}
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/templates/book-list.fxml"));
@@ -15,9 +19,5 @@ public class TemplateController extends Application {
 		stage.setTitle("FXML Welcome");
 		stage.setScene(new Scene(root, 300, 275));
 		stage.show();
-	}
-
-	public static void main(String[] args) {
-		Application.launch(TemplateController.class, args);
 	}
 }

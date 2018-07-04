@@ -19,6 +19,15 @@ final public class User implements Serializable {
 		this.authorization = auth;
 	}
 
+	public boolean authenticate(String id, String Password) {
+		return this.id.equals(id) && this.password.equals(password);
+
+	}
+
+	public Auth getAuthorization() {
+		return authorization;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -27,19 +36,10 @@ final public class User implements Serializable {
 		return password;
 	}
 
-	public boolean authenticate(String id, String Password) {
-		return this.id.equals(id) && this.password.equals(password);
-
-	}
-
 	public boolean isSuperUser() {
 
 		return this.authorization.equals(Auth.ADMIN) || this.authorization.equals(Auth.BOTH);
 
-	}
-
-	public Auth getAuthorization() {
-		return authorization;
 	}
 
 	@Override
