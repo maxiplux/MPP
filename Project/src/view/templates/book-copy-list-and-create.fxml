@@ -15,9 +15,9 @@
     <TableView fx:id="itemTbl" layoutX="14.0" layoutY="115.0" prefHeight="242.0" prefWidth="586.0">
       <columns>
         <TableColumn fx:id="CopyId" prefWidth="75.0" text="Copy Id" />
-        <TableColumn fx:id="isAvaible" prefWidth="271.0" text="Is Avaible" />
-            <TableColumn fx:id="overdue"  prefWidth="75.0" text="Overdue" />
-            <TableColumn  fx:id="possesion"  prefWidth="164.0" text="In possesion of" />
+        <TableColumn fx:id="isAvaible" prefWidth="100.0" text="Availability" />
+            <TableColumn fx:id="overdue" prefWidth="200.0" text="Overdue" />
+            <TableColumn fx:id="possesion" prefWidth="210.0" text="In possesion of" />
         
       </columns>
     </TableView>

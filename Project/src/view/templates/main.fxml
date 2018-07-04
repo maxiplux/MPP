@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@resources/library.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
 >
    <children>
       <HBox alignment="CENTER" layoutX="98.0" layoutY="133.0" prefHeight="148.0" prefWidth="436.0" spacing="15.0">
@@ -17,7 +17,7 @@
                <graphic>
                   <ImageView fitHeight="42.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@purchase-books.png" />
+                        <Image url="@resources/purchase-books.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -26,7 +26,7 @@
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@books.png" />
+                        <Image url="@resources/books.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -35,7 +35,7 @@
                <graphic>
                   <ImageView fitHeight="42.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@group.png" />
+                        <Image url="@resources/group.png" />
                      </image>
                   </ImageView>
                </graphic>
