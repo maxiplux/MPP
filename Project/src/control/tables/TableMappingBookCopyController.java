@@ -41,18 +41,23 @@ public class TableMappingBookCopyController implements Initializable {
 	TableColumn isAvaible;
 
 	@FXML
-	Button btnnewCopy;
-	
+	TableColumn overdue;
 	@FXML
-	Button 	btnBack;
+	TableColumn possesion;
+
+	@FXML
+	Button btnnewCopy;
+
+	@FXML
+	Button btnBack;
 
 	// The table's data
 	ObservableList<BookCopy> data;
 
-	public TableMappingBookCopyController(Book book, Stage primaryStage,User user) {
+	public TableMappingBookCopyController(Book book, Stage primaryStage, User user) {
 		super();
 		this.book = book;
-		this.user=user;
+		this.user = user;
 		this.primaryStage = primaryStage;
 	}
 
@@ -66,7 +71,9 @@ public class TableMappingBookCopyController implements Initializable {
 
 		CopyId.setCellValueFactory(new PropertyValueFactory<BookCopy, String>("copyNum"));
 		isAvaible.setCellValueFactory(new PropertyValueFactory<BookCopy, String>("exists"));
-		// checkoutBy.setCellValueFactory(new PropertyValueFactory<BookCopy,
+		overdue.setCellValueFactory(new PropertyValueFactory<BookCopy, String>("overdue"));
+		possesion.setCellValueFactory(new PropertyValueFactory<BookCopy, String>("possesion"));
+
 		// Integer>("copyNum"));
 
 		data = FXCollections.observableArrayList();

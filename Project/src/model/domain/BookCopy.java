@@ -1,6 +1,11 @@
 package model.domain;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import model.dataaccess.DataAccessFacade;
 
 /**
  * Immutable class
@@ -57,6 +62,29 @@ final public class BookCopy implements Serializable {
 
 	public boolean getisAvailable() {
 		return isAvailable;
+	}
+	
+
+	public String getOverdue() {
+
+		return "No";
+	}
+
+	public String getPossesion() {
+		DataAccessFacade daf = new DataAccessFacade();
+		HashMap<String, LibraryMember> mems = daf.readMemberMap();
+		Set<Entry<String, LibraryMember>> memberSet = mems.entrySet();
+		for (Entry<String, LibraryMember> lm : memberSet) {
+			LibraryMember mem = lm.getValue();
+			for(CheckoutRecordEntry cre : mem.getCheckoutRecordEntries())
+			{
+				if(cre.getBookcopy().equals(this))
+				{
+					return mem.getMemberId();
+				}
+			}
+		}
+		return "No";
 	}
 
 	@Override
