@@ -6,13 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class TemplateController extends Application {
+public class TemplateController{
 
 	public static void main(String[] args) {
-		Application.launch(TemplateController.class, args);
+		//Application.launch(TemplateController.class, args);
 	}
 
-	@Override
+	//@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/templates/book-list.fxml"));
 

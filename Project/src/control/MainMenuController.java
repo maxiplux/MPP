@@ -13,8 +13,8 @@ import model.dataaccess.Auth;
 import model.domain.User;
 import util.Util;
 
-public class MainMenuController extends Application {
-	public static void main(String[] args) {
+public class MainMenuController  extends Application{
+	public static void main(String[] args) { 
 		Application.launch(MainMenuController.class, args);
 	}
 

@@ -23,7 +23,6 @@ public class LoginController extends Application {
 	}
 
 	private boolean userOrIdWrong = true;
-	private MainMenuController secondWindow;
 
 	private Stage primaryStage;
 
@@ -45,9 +44,10 @@ public class LoginController extends Application {
 
 			DataAccess db = new DataAccessFacade();
 			HashMap<String, User> users = db.readUserMap();
-			for (Entry<String, User> entry : users.entrySet()) {
-				String key = entry.getKey();
-				User user = entry.getValue();
+//			for (Entry<String, User> entry : users.entrySet()) {
+//				String key = entry.getKey();
+//				User user = entry.getValue();
+			User user = users.get(userId.getText());
 				if (user.authenticate(userId.getText(), txtPassword.getText())) {
 
 					userOrIdWrong = false;
@@ -62,7 +62,7 @@ public class LoginController extends Application {
 
 				}
 
-			}
+	//		}
 			if (userOrIdWrong) {
 				Util.showAlert("User id or password Wrong ", "Error login", AlertType.ERROR);
 			}

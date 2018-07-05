@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import model.domain.Book;
 import model.domain.User;
 
-public class BookCopyController extends Application {
+public class BookCopyController {
 
 	private Book book;
 
@@ -27,7 +27,7 @@ public class BookCopyController extends Application {
 		this.user = user;
 	}
 
-	@Override
+	//@Override
 	public void start(Stage stage) throws Exception {
 
 		FXMLLoader root = new FXMLLoader(getClass().getResource("/view/templates/book-copy-list-and-create.fxml"));

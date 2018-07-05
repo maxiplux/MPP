@@ -22,7 +22,7 @@ import model.domain.Address;
 import model.domain.LibraryMember;
 import model.domain.User;
 
-public class LibraryMemberController extends Application {
+public class LibraryMemberController  {
 	LibraryMemberController(User user) {
 		this.user = user;
 	}
@@ -54,7 +54,7 @@ public class LibraryMemberController extends Application {
 		this.txtPhone.setText(txtPhone);
 	}
 
-	@Override
+	//@Override
 	public void start(Stage stage) throws Exception {
 		this.primaryStage = stage;
 		Parent root = FXMLLoader.load(getClass().getResource("/view/templates/ListMembers.fxml"));

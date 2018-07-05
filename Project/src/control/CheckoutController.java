@@ -23,7 +23,7 @@ import model.domain.LibraryMember;
 import model.domain.User;
 import util.Util;
 
-public class CheckoutController extends Application {
+public class CheckoutController {
 
 	private User user;
 
@@ -59,7 +59,7 @@ public class CheckoutController extends Application {
 
 	private Stage primaryStage;
 
-	@Override
+	//@Override
 	public void start(Stage stage) throws Exception {
 		this.primaryStage = stage;
 		Parent root = FXMLLoader.load(getClass().getResource("/view/templates/checkoutbook.fxml"));

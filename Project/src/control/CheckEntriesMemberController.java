@@ -18,7 +18,7 @@ import model.domain.LibraryMember;
 import model.domain.User;
 import util.Util;
 
-public class CheckEntriesMemberController extends Application {
+public class CheckEntriesMemberController {
 
 	private User user;
 
@@ -26,7 +26,7 @@ public class CheckEntriesMemberController extends Application {
 		this.user = user;
 	}
 
-	@Override
+	//@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/templates/checkcheckoutsfromember.fxml"));
 
