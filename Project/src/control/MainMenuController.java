@@ -13,9 +13,9 @@ import model.dataaccess.Auth;
 import model.domain.User;
 import util.Util;
 
-public class MainMenuController  extends Application{
+public class MainMenuController {
 	public static void main(String[] args) { 
-		Application.launch(MainMenuController.class, args);
+		//Application.launch(MainMenuController.class, args);
 	}
 
 	private User user;
@@ -24,7 +24,6 @@ public class MainMenuController  extends Application{
 		this.user = user;
 	}
 
-	@Override
 	public void start(Stage stage) throws Exception {
 
 		Parent root = FXMLLoader.load(getClass().getResource("/view/templates/main.fxml"));

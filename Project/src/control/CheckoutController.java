@@ -26,13 +26,14 @@ import util.Util;
 public class CheckoutController {
 
 	private User user;
+	private static DataAccess db = new DataAccessFacade();
 
 	public CheckoutController(User user) {
 		this.user = user;
 	}
 
 	protected static CheckoutRecordEntry checkoutABook(String userId, String isbn) {
-		DataAccess db = new DataAccessFacade();
+		
 		HashMap<String, LibraryMember> memMap = db.readMemberMap();
 		LibraryMember mb = memMap.get(userId);
 		if (mb == null) {
@@ -97,40 +98,52 @@ public class CheckoutController {
 
 		boolean badmember = true;
 		boolean badisbn = true;
-		DataAccess db = new DataAccessFacade();
+		//DataAccess db = new DataAccessFacade();
 		HashMap<String, LibraryMember> list_members = db.readMemberMap();
 		HashMap<String, Book> books = db.readBooksMap();
-		for (Entry<String, LibraryMember> entry : list_members.entrySet()) {
-			if (entry.getValue().getMemberId().equals(memberId)) {
-				badmember = false;
-				break;
+//		for (Entry<String, LibraryMember> entry : list_members.entrySet()) {
+//			if (entry.getValue().getMemberId().equals(memberId)) {
+//				badmember = false;
+//				break;
+//
+//			}
+//		}
 
-			}
-		}
-
-		if (badmember) {
+//		if (badmember) {
+		if (list_members.get(memberId)==null) {
 			Util.showAlert("Member Id Not found", "Not data found", AlertType.WARNING);
 			return;
 		}
+		Book temp_book = books.get(txtIsbn);
 
-		Book temp_book = new Book();
-		for (Entry<String, Book> entry : books.entrySet()) {
-			if (entry.getValue().getIsbn().equals(txtIsbn)) {
-				badisbn = false;
-				temp_book = entry.getValue();
+//		Book temp_book = new Book();
+//		for (Entry<String, Book> entry : books.entrySet()) {
+//			if (entry.getValue().getIsbn().equals(txtIsbn)) {
+//				badisbn = false;
+//				temp_book = entry.getValue();
+//
+//			}
+//		}
 
-			}
-		}
-
-		if (badisbn) {
+//		if (badisbn) {
+		if (temp_book==null) {
 			Util.showAlert("Book Isbn No found", "Not data found", AlertType.WARNING);
 			return;
 		} else {
 			if (temp_book.isAvailable()) {
 
-				CheckoutRecordEntry cre = checkoutABook(memberId, txtIsbn);
+			//	CheckoutRecordEntry cre = checkoutABook(memberId, txtIsbn);
 				//CheckoutRecordEntrySuccessController checkoutrecordentrysuccess = new CheckoutRecordEntrySuccessController(
 				//		cre, this.user);
+				
+				BookCopy bc = temp_book.getNextAvailableCopy();
+
+				CheckoutRecordEntry cre = list_members.get(memberId).addCheckoutRecordEntry(bc, LocalDate.now(),
+						LocalDate.now().plusDays(temp_book.getMaxCheckoutLength()));
+				bc.changeAvailability();
+				db.saveNewMember(list_members.get(memberId));
+				db.saveAbook(temp_book);
+				
 
 				try {
 				//	checkoutrecordentrysuccess.start(this.primaryStage);
