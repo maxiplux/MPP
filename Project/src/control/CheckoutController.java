@@ -85,58 +85,63 @@ public class CheckoutController extends Application {
 
 		Button btnCheckout = (Button) root.lookup("#btnCheckout");
 		btnCheckout.setOnAction((event) -> {
-			boolean badmember = true;
-			boolean badisbn = true;
-			DataAccess db = new DataAccessFacade();
-			HashMap<String, LibraryMember> list_members = db.readMemberMap();
-			HashMap<String, Book> books = db.readBooksMap();
-			for (Entry<String, LibraryMember> entry : list_members.entrySet()) {
-				if (entry.getValue().getMemberId().equals(memberId.getText())) {
-					badmember = false;
-					break;
-
-				}
-			}
-
-			if (badmember) {
-				Util.showAlert("Member Id Not found", "Not data found", AlertType.WARNING);
-				return;
-			}
-
-			Book temp_book = new Book();
-			for (Entry<String, Book> entry : books.entrySet()) {
-				if (entry.getValue().getIsbn().equals(txtIsbn.getText())) {
-					badisbn = false;
-					temp_book = entry.getValue();
-
-				}
-			}
-
-			if (badisbn) {
-				Util.showAlert("Book Isbn No found", "Not data found", AlertType.WARNING);
-				return;
-			} else {
-				if (temp_book.isAvailable()) {
-
-					CheckoutRecordEntry cre = checkoutABook(memberId.getText(), txtIsbn.getText());
-					CheckoutRecordEntrySuccessController checkoutrecordentrysuccess = new CheckoutRecordEntrySuccessController(
-							cre, this.user);
-
-					try {
-						checkoutrecordentrysuccess.start(stage);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-					return;
-				} else {
-					Util.showAlert("No available copy for the book", "Not data found", AlertType.ERROR);
-					return;
-				}
-			}
+			checkoutButtonHanle(memberId.getText(), txtIsbn.getText());
 		});
 
 		stage.show();
+	}
+
+	public void checkoutButtonHanle(String memberId, String txtIsbn) {
+
+		boolean badmember = true;
+		boolean badisbn = true;
+		DataAccess db = new DataAccessFacade();
+		HashMap<String, LibraryMember> list_members = db.readMemberMap();
+		HashMap<String, Book> books = db.readBooksMap();
+		for (Entry<String, LibraryMember> entry : list_members.entrySet()) {
+			if (entry.getValue().getMemberId().equals(memberId)) {
+				badmember = false;
+				break;
+
+			}
+		}
+
+		if (badmember) {
+			Util.showAlert("Member Id Not found", "Not data found", AlertType.WARNING);
+			return;
+		}
+
+		Book temp_book = new Book();
+		for (Entry<String, Book> entry : books.entrySet()) {
+			if (entry.getValue().getIsbn().equals(txtIsbn)) {
+				badisbn = false;
+				temp_book = entry.getValue();
+
+			}
+		}
+
+		if (badisbn) {
+			Util.showAlert("Book Isbn No found", "Not data found", AlertType.WARNING);
+			return;
+		} else {
+			if (temp_book.isAvailable()) {
+
+				CheckoutRecordEntry cre = checkoutABook(memberId, txtIsbn);
+				CheckoutRecordEntrySuccessController checkoutrecordentrysuccess = new CheckoutRecordEntrySuccessController(
+						cre, this.user);
+
+				try {
+					checkoutrecordentrysuccess.start(this.primaryStage);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				return;
+			} else {
+				Util.showAlert("No available copy for the book", "Not data found", AlertType.ERROR);
+				return;
+			}
+		}
 	}
 }

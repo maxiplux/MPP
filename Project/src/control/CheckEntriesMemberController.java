@@ -39,29 +39,7 @@ public class CheckEntriesMemberController extends Application {
 		Button btnBack = (Button) root.lookup("#btnBack");
 
 		btnPrintConsole.setOnAction((event) -> {
-			boolean userOrIdWrong = true;
-
-			DataAccess db = new DataAccessFacade();
-			HashMap<String, LibraryMember> users = db.readMemberMap();
-
-			for (Entry<String, LibraryMember> entry : users.entrySet()) {
-				String key = entry.getKey();
-				LibraryMember member = entry.getValue();
-
-				if (member.getMemberId().equals(memberId.getText())) {
-					System.out.println("|ISBN\t\t|Book Name\t\t\t\t\t|checkout Date\t|dueDate\t|");
-					for (CheckoutRecordEntry entrie : member.getCheckoutRecordEntries()) {
-						System.out.println(entrie);
-					}
-					userOrIdWrong = false;
-
-				}
-			}
-
-			if (userOrIdWrong) {
-				Util.showAlert("Member id No found", "Error", AlertType.ERROR);
-			}
-
+			prinRecordToConsole(memberId.getText());
 		});
 
 		btnBack.setOnAction((event) -> {
@@ -75,5 +53,31 @@ public class CheckEntriesMemberController extends Application {
 		});
 
 		stage.show();
+	}
+	
+	public void prinRecordToConsole(String memberId)
+	{
+		boolean userOrIdWrong = true;
+
+		DataAccess db = new DataAccessFacade();
+		HashMap<String, LibraryMember> users = db.readMemberMap();
+
+		for (Entry<String, LibraryMember> entry : users.entrySet()) {
+			String key = entry.getKey();
+			LibraryMember member = entry.getValue();
+
+			if (member.getMemberId().equals(memberId)) {
+				System.out.println("|ISBN\t\t|Book Name\t\t\t\t\t|checkout Date\t|dueDate\t|");
+				for (CheckoutRecordEntry entrie : member.getCheckoutRecordEntries()) {
+					System.out.println(entrie);
+				}
+				userOrIdWrong = false;
+
+			}
+		}
+
+		if (userOrIdWrong) {
+			Util.showAlert("Member id No found", "Error", AlertType.ERROR);
+		}
 	}
 }
