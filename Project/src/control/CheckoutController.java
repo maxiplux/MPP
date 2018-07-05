@@ -88,13 +88,13 @@ public class CheckoutController {
 
 		Button btnCheckout = (Button) root.lookup("#btnCheckout");
 		btnCheckout.setOnAction((event) -> {
-			checkoutButtonHanle(memberId.getText(), txtIsbn.getText());
+			checkoutButtonHandle(memberId.getText(), txtIsbn.getText());
 		});
 
 		stage.show();
 	}
 
-	public void checkoutButtonHanle(String memberId, String txtIsbn) {
+	public void checkoutButtonHandle(String memberId, String txtIsbn) {
 
 		boolean badmember = true;
 		boolean badisbn = true;
@@ -127,7 +127,7 @@ public class CheckoutController {
 
 //		if (badisbn) {
 		if (temp_book==null) {
-			Util.showAlert("Book Isbn No found", "Not data found", AlertType.WARNING);
+			Util.showAlert("Book isbn No found", "Not data found", AlertType.WARNING);
 			return;
 		} else {
 			if (temp_book.isAvailable()) {
