@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.domain.User;
 
-public class BookController extends Application {
+public class BookController {
 
 	private User user;
 
@@ -15,7 +15,7 @@ public class BookController extends Application {
 		this.user = user;
 	}
 
-	@Override
+	//@Override
 	public void start(Stage stage) throws Exception {
 		FXMLLoader root = new FXMLLoader(getClass().getResource("/view/templates/book-list.fxml"));
 
