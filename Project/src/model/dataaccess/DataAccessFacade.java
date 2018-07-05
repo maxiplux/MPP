@@ -25,7 +25,7 @@ public class DataAccessFacade implements DataAccess {
 
 	static void loadBookMap(List<Book> bookList) {
 		// we need load informatoon on disk before do anything copyleft francisco
-		HashMap<String, Book> books = (HashMap<String, Book>) readFromStorage(StorageType.BOOKS);
+		HashMap<String, Book> books = (HashMap<String, Book>) readFromStorage(StorageType.BOOKS); 
 
 		bookList.forEach(book -> books.put(book.getIsbn(), book));
 		saveToStorage(StorageType.BOOKS, books);

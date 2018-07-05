@@ -1,3 +1,2 @@
-//This is a note from the team responsible for this project.
-//It tells the professor about any extra work that was done or other things
-//that need to be mentioned.
+//How run this app , we create an video about how  work with it .
+//in the next video you can see  https://www.screencast.com/t/nFEyi0EJf8y 
