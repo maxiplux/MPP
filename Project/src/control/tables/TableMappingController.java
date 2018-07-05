@@ -38,7 +38,7 @@ public class TableMappingController implements Initializable {
 	@FXML
 	TableView<Book> itemTbl;
 
-	@FXML
+	@FXML 
 	TableColumn itemIsbn;
 	@FXML
 	TableColumn itemName;

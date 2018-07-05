@@ -17,7 +17,7 @@ final public class LibraryMember extends Person implements Serializable {
 	}
 
 	public String getFullName() {
-		return String.format("%s %s", this.getFirstName(), this.getFirstName());
+		return String.format("%s %s", this.getFirstName(), this.getLastName());
 	}
 
 	public CheckoutRecordEntry addCheckoutRecordEntry(BookCopy bookcopy, LocalDate checkoutDate, LocalDate dueDate) {
