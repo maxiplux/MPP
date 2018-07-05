@@ -117,7 +117,7 @@ public class LibraryMemberController extends Application {
 
 			this.db = new DataAccessFacade();
 
-			String mId = String.valueOf(db.readMemberMap().size());
+			String mId = String.valueOf(db.readMemberMap().size()+1);
 			if (!this.txtmemberId.getText().equals("NEW")) {
 				mId = this.txtmemberId.getText();
 			}
