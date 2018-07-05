@@ -54,7 +54,6 @@ public class LibraryMemberController extends Application {
 		this.txtPhone.setText(txtPhone);
 	}
 
-	@Override
 	public void start(Stage stage) throws Exception {
 		this.primaryStage = stage;
 		Parent root = FXMLLoader.load(getClass().getResource("/view/templates/ListMembers.fxml"));

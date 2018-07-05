@@ -33,7 +33,7 @@
             <VBox alignment="CENTER" prefHeight="131.0" prefWidth="84.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <TextField id="memberId" fx:id="memberId" />
-                  <PasswordField id="txtIsbn" fx:id="txtIsbn" />
+                  <TextField id="txtIsbn" fx:id="txtIsbn" />
                </children>
             </VBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
