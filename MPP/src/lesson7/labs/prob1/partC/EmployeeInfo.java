@@ -15,9 +15,11 @@ public class EmployeeInfo {
 	public static List<Employee> removeDuplicates(List<Employee> employees) {
 		HashMap<Employee, Employee> tracker = new HashMap<>();
 		List<Employee> noDupsList = new ArrayList<>();
-		for(int i = 0; i < employees.size(); ++i) {
+		for(int i = 0; i < employees.size(); ++i) 
+		{
 			Employee e = employees.get(i);
-			if(!tracker.containsKey(e)) {
+			if(!tracker.containsKey(e)) 
+			{
 				tracker.put(e, e);
 				noDupsList.add(e);
 			}

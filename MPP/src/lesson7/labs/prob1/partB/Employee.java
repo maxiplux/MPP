@@ -25,7 +25,11 @@ public class Employee {
 		return "(" + name + ", " + salary + ")";
 	}
 	
-	public boolean equals(Employee e) {
-		return e.name.equals(name) && e.salary == salary;
+	public boolean equals(Object obj) 
+	{
+		Employee other = (Employee) obj;		 
+		return other.name.equals(this.name) && other.salary==this.salary;
 	}
+	
+	
 }

@@ -1,0 +1,6 @@
+The problem is on equals , is necesary write it using Object  superclass and then do cast to Employee
+public boolean equals(Object obj) 
+	{
+		Employee other = (Employee) obj;		 
+		return other.name.equals(this.name) && other.salary==this.salary;
+	}

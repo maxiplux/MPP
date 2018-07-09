@@ -1,0 +1,7 @@
+AbstractCollection , Define the behavior to work  on hierarchy of java collections 
+
+List<E> , Abstract contract to general list
+RandomAccess ,  Data contract how implements aleatory access  on Linear time.
+Cloneable , Data contract for how create a new references objects 
+java.io.Serializable , Data contract Necessary to marshalling one object into file or other kind 
+of object.

@@ -1,0 +1,10 @@
+The problem is on hashCode , is neccesary override hashCode , because is necesary when we work with hashmaps , other wise work with
+hashcode of superclass object
+@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + salary;
+		return result;
+	}

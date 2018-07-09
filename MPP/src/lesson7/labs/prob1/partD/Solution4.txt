@@ -1,0 +1,12 @@
+// The Key on hash is necesary be inmutable , if we change it , tracker.get(e).setVisited(true);
+			//   to ensure consistency, the map key must be immutable.			
+			if(!tracker.containsKey(e)) 
+			{
+				tracker.put(e, e);
+				noDupsList.add(e);
+				
+			} 
+// Exists two solutions to this problem, one is only remove the change  .setVisited(true); and other way is set inmutable the key class , to not allowed changes .
+
+			
+			

@@ -12,17 +12,25 @@ public class EmployeeInfo {
 	 * An Employee instance is considered to be a duplicate of another Employee
 	 * instance if the two instances have the same name and salary.
 	 */
-	public static List<Employee> removeDuplicates(List<Employee> employees) {
+	
+	
+	public static List<Employee> removeDuplicates(List<Employee> employees)
+	{
 		HashMap<Employee, Employee> tracker = new HashMap<>();
 		List<Employee> noDupsList = new ArrayList<>();
-		for(int i = 0; i < employees.size(); ++i) {
+		for(int i = 0; i < employees.size(); ++i) 
+		{
 			Employee e = employees.get(i);
-			if(!tracker.containsKey(e)) {
+			// The Key on hash is necesary be inmutable , if we change it , tracker.get(e).setVisited(true);
+			//   to ensure consistency, the map key must be immutable.			
+			if(!tracker.containsKey(e)) 
+			{
 				tracker.put(e, e);
 				noDupsList.add(e);
-			} else {
-				tracker.get(e).setVisited(true);
-			}
+				
+			} 
+			
+			
 		}
 		return noDupsList;
 	}

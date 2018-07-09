@@ -11,10 +11,12 @@ public class EmployeeInfo {
 	 * An Employee instance is considered to be a duplicate of another Employee
 	 * instance if the two instances have the same name and salary.
 	 */
-	public static List<Employee> removeDuplicates(List<Employee> employees) {
+	public static List<Employee> removeDuplicates(List<Employee> employees)
+	{
 		List<Employee> noDupsList = new ArrayList<>();
 		noDupsList.add(employees.get(0));
-		for(int i = 1; i < employees.size(); ++i) {
+		for(int i = 1; i < employees.size(); ++i) 
+		{
 			if(!inList(employees.get(i), noDupsList)) {
 				noDupsList.add(employees.get(i));
 			}
@@ -23,9 +25,13 @@ public class EmployeeInfo {
 	}
 	
 	/** Returns true if e is in the list emps, false otherwise */
-	private static boolean inList(Employee e, List<Employee> emps) {
+	private static boolean inList(Employee e, List<Employee> emps)
+	{
 		for(Employee emp : emps) {
-			if(e.equals(emp)) return true;
+			if(e.equals(emp))
+			{
+				 return true;
+			}
 		}
 		return false;
 	}
@@ -90,7 +96,9 @@ public class EmployeeInfo {
 	 */
 	public static boolean listsAreEqual(List<Employee> l1, List<Employee> l2) {
 		if(l1.size() != l2.size()) return false;
-		for(Employee e : l1) {
+		
+		for(Employee e : l1) 
+		{
 			if(!l2.contains(e)) return false;
 		}
 		return true;
