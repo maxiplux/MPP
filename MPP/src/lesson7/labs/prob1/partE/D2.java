@@ -5,7 +5,7 @@ public interface D2  extends B , C {
 	@Override
 	default int method() {
 		// TODO Auto-generated method stub
-		return C.super.method();
+		return 0;
 	}
 	
 

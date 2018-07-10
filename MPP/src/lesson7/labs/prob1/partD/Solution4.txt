@@ -1,12 +1,9 @@
-// The Key on hash is necesary be inmutable , if we change it , tracker.get(e).setVisited(true);
-			//   to ensure consistency, the map key must be immutable.			
-			if(!tracker.containsKey(e)) 
-			{
-				tracker.put(e, e);
-				noDupsList.add(e);
-				
-			} 
-// Exists two solutions to this problem, one is only remove the change  .setVisited(true); and other way is set inmutable the key class , to not allowed changes .
+// The Keys of the hash need to be immutable , if we change it with tracker.get(e).setVisited(true); we may get incorrect hashmap behavior
+//   to ensure consistency, the map key must be immutable.			
+			
+// There are two solutions for this problem, 
+//one is only remove the call to .setVisited(true); in the EmployeeInfo
+//two other way is to set the key class (Employee) to be immutable, not allows changes .
 
 			
 			

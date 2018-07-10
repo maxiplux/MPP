@@ -1,7 +1,6 @@
 AbstractCollection , Define the behavior to work  on hierarchy of java collections 
 
 List<E> , Abstract contract to general list
-RandomAccess ,  Data contract how implements aleatory access  on Linear time.
-Cloneable , Data contract for how create a new references objects 
-java.io.Serializable , Data contract Necessary to marshalling one object into file or other kind 
-of object.
+RandomAccess ,  Data contract how implements random access  on Linear time and the complexity is Big O(1) 
+Cloneable , Data contract for making a  field-for-field copy of instances of that class. 
+java.io.Serializable , This is a way to make an object eligible for saving its state into a file or other kind of formats .

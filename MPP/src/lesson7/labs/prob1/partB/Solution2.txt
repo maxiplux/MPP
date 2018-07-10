@@ -1,4 +1,4 @@
-The problem is on equals , is necesary write it using Object  superclass and then do cast to Employee
+The problem is in the equals method, the parameter´s type must be Object superclass instead of Employee, we can cast it to Employee inside the method´s body
 public boolean equals(Object obj) 
 	{
 		Employee other = (Employee) obj;		 

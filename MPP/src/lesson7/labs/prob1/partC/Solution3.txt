@@ -1,5 +1,4 @@
-The problem is on hashCode , is neccesary override hashCode , because is necesary when we work with hashmaps , other wise work with
-hashcode of superclass object
+The problem is because Employee class does not override the hashCode method, hashCode is important in order to use hashmaps
 @Override
 	public int hashCode() {
 		final int prime = 31;

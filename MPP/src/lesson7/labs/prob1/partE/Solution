@@ -1,7 +1,6 @@
-If  A is an interface and B and  C are interface
-When the type D is a class . : Solution , You could implements B and C and override  method and work 
-When the type D is an interface : Solution , You could implements B and C and override  method and work
+When the type D is a class . : Solution Work , You could implements B and C and override  method and work 
+When the type D is an interface : Solution work .If B or C has default 
+You could implements B and C  but need to  override methods or create on 
+B  and C default method .
 
-If  A is an Abstract class  and B and  C are interface
-When the type D is a class . : Solution work , because  you can extend from many interfaces 
-When the type D is an interface : Solution work , because  you can implements from many interfaces
+ 
