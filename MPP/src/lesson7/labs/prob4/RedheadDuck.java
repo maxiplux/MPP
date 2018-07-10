@@ -1,20 +1,12 @@
 package lesson7.labs.prob4;
 
-
-public class RedheadDuck   extends Duck implements FlyBehavior,QuackBehavior {
-
+public class RedheadDuck extends Duck {
 
 	@Override
 	public void display() {
-		
-			System.out.println("	displaying");
-		
-		
-	}
-	
-	
 
-	
-	
+		System.out.println("	displaying");
+
+	}
 
 }
