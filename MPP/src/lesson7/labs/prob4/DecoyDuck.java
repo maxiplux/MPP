@@ -1,12 +1,6 @@
 package lesson7.labs.prob4;
 
-public class DecoyDuck extends Duck implements FlyBehavior, QuackBehavior {
-
-	@Override
-	public void quack() {
-		System.out.println("	cant not quack");
-
-	}
+public class DecoyDuck extends Duck implements Unflyable, Unquackable {
 
 	@Override
 	public void display() {
@@ -15,8 +9,15 @@ public class DecoyDuck extends Duck implements FlyBehavior, QuackBehavior {
 	}
 
 	@Override
+	public void quack() {
+		// TODO Auto-generated method stub
+		Unquackable.super.quack();
+	}
+
+	@Override
 	public void fly() {
-		System.out.println("	can not fly");
+		// TODO Auto-generated method stub
+		Unflyable.super.fly();
 	}
 
 }

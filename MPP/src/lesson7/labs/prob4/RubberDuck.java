@@ -1,6 +1,6 @@
 package lesson7.labs.prob4;
 
-public class RubberDuck extends Duck implements FlyBehavior, QuackBehavior {
+public class RubberDuck extends Duck implements Squeakable {
 
 	@Override
 	public void quack() {

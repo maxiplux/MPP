@@ -1,6 +1,6 @@
 package lesson7.labs.prob4;
 
-public abstract class Duck {
+public abstract class Duck implements Flyable, Quackable {
 
 	public abstract void display();
 

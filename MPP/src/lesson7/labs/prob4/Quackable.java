@@ -1,6 +1,6 @@
 package lesson7.labs.prob4;
 
-public interface QuackBehavior {
+public interface Quackable {
 
 	public default void quack() {
 
