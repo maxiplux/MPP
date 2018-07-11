@@ -36,12 +36,6 @@ public class Employee {
 		return "[" + name + ", " + salary + "]";
 	}
 
-	public static List<Employee> sort(List<Employee> emps) {
-		Collections.sort(emps, Comparator.comparing(Employee::getName)
-				.thenComparing(Comparator.comparing(Employee::getSalary).reversed()));
-		return emps;
-	}
-
 	public static void main(String[] args) {
 		List<Employee> list = new ArrayList<Employee>() {
 			{
@@ -58,6 +52,9 @@ public class Employee {
 		// expected output:
 		// [[Jim, 100000], [Jim, 75000], [Jim, 70000], [Joe, 59000], [Joe, 50000],
 		// [Rich, 88000], [Steve, 55000], [Tom, 80000]]
-		System.out.println(sort(list));
+		
+		Collections.sort(list, Comparator.comparing(Employee::getName)
+				.thenComparing(Comparator.comparing(Employee::getSalary).reversed()));
+		System.out.println(list);
 	}
 }
