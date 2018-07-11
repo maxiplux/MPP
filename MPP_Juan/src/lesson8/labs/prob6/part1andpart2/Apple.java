@@ -16,5 +16,4 @@ public class Apple {
 		Weight = weight;
 	}
 
-	
 }
