@@ -6,22 +6,25 @@ import java.util.Collections;
 import java.util.List;
 
 public class EmployeeInfo {
-	static enum SortMethod {BYNAME, BYSALARY};
+	static enum SortMethod {
+		BYNAME, BYSALARY
+	};
+
 	private SortMethod method;
-	
+
 	public EmployeeInfo(SortMethod method) {
 		this.method = method;
 	}
-	//Comparators are unaware of the value in method
+
+	// Comparators are unaware of the value in method
 	public void sort(List<Employee> emps) {
-		if(method == SortMethod.BYNAME) {
+		if (method == SortMethod.BYNAME) {
 			Collections.sort(emps, new EmployeeNameComparator());
-		}
-		else if(method == SortMethod.BYSALARY) {
+		} else if (method == SortMethod.BYSALARY) {
 			Collections.sort(emps, new EmployeeSalaryComparator());
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		List<Employee> emps = new ArrayList<>();
 		emps.add(new Employee("Joe", 100000));
@@ -32,22 +35,16 @@ public class EmployeeInfo {
 		List<Employee> list = Arrays.asList(joe, joe2);
 		Collections.sort(list, new EmployeeNameComparator());
 		System.out.println(list);
-		
-		
+
 		System.out.println("joe equals joe2? " + joe.equals(joe2));
 		EmployeeNameComparator c = new EmployeeNameComparator();
-		System.out.println("joe equals joe2? " + (c.compare(joe, joe2)==0) );
+		System.out.println("joe equals joe2? " + (c.compare(joe, joe2) == 0));
 
-		
 		/*
-		EmployeeInfo ei = new EmployeeInfo(EmployeeInfo.SortMethod.BYNAME);
-		ei.sort(emps);
-		System.out.println(emps);
-		ei = new EmployeeInfo(EmployeeInfo.SortMethod.BYSALARY);
-		ei.sort(emps);
-		System.out.println(emps);*/
+		 * EmployeeInfo ei = new EmployeeInfo(EmployeeInfo.SortMethod.BYNAME);
+		 * ei.sort(emps); System.out.println(emps); ei = new
+		 * EmployeeInfo(EmployeeInfo.SortMethod.BYSALARY); ei.sort(emps);
+		 * System.out.println(emps);
+		 */
 	}
 }
-
-
-	
