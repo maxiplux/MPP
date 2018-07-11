@@ -5,4 +5,4 @@ that should not be considered equal
 For example:
 Employee e1 = new Employee("Daniel", 50000);
 Employee e2 = new Employee("Daniel", 90000);
-the 2 employee are not equals
+the 2 employees are not equals
