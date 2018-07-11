@@ -12,16 +12,17 @@ public class ForEachExample {
 		List<String> list = Arrays.asList("Hello there", "Goodbye", "Back soon", 
 				"Away", "On Vacation", "Everywhere you want to be");
 		
-		//print each element of the list in upper case format
+		//a. Use a lambda expression instead of directly defining a Consumer
 		list.forEach(  
 				t -> System.out.println(t.toUpperCase())					
 				);
 		
-		Consumer<String> cons = (st)-> System.out.println(st.toUpperCase());
 		
+		
+		//b. Use a method reference in place of your lambda expression in (a)
+		Consumer<String> cons = (st)-> System.out.println(st.toUpperCase());
 		list.forEach(cons::accept);
-		//for(String s: list) cons.accept(s);
-		//list.forEach(cons);
+		//list.forEach(System.out::print);
 			
 			
 		
