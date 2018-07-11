@@ -1,0 +1,116 @@
+a)
+_ Imperative programming
+Focus on the imperative ("how")
+mainly use loop, condition in method
+
+_ Functional programming
+Focus on the declarative ("what")
+mainly use recursion
+
+b)
+Declarative programming is the way of coding that describe "what" the developer wants to do, 
+making the code more self-documenting, mirroring precisely the requirements, 
+mainly use recursion instead of for loop for algorithm 
+Example: using recursion to calculate the factorial
+Factorial Functional method
+	public static int factorial(int n) {
+		return (n==0 || n==1) ? 1 : n * factorial(decrement(n));
+	}
+	
+	private static int decrement(int n) {
+		return n - 1;
+	}
+	
+
+c)
+_ functional interface: interface with only one abstract method, and does not count if 
+the abstract method is the override method of java.lang.Object methods
+	example: Comparator interface
+		@FunctionalInterface
+		public interface EventHandler<T extends Event> extends EventListener {
+			   
+		    void handle(T event);
+		}	
+_ functor: an implementation of functional interface
+	example: 
+	public class PrintConsoleHandle implements EventHandler<> {
+			@Override
+			public void handle(T event){
+				System.out.println("provoked");
+			};
+	}
+	
+_ closure: an instance of a functor embedded inside another class
+capable of remembering the state of its enclosing object
+	example: 
+	public class EmployeeInfo {
+		static enum SortMethod {BYNAME, BYSALARY}
+		public void sort (List<Employee> emps, final SortMethod meth){
+			class EmployeeComparator implements Comparator<Employee>{
+				@Override
+				public int compare(Employee e1, Employee e2)
+				{
+					if(meth == SortMethod.BYNAME)
+						return e1.getName().compareTo(e2.getName());
+					else
+						return Double.compare(e1.getSalary(), e2.getSalary);
+				}
+			}
+			Collections.sort(emps, new EmployeeComparator());
+		}
+	}
+	
+d) Benefits of functional programming
+	_ Program are more compact, easier to read, write and understand
+	_ Thread-safe
+	_ Easy to demonstrate correctness
+	_ Easy to test
+
+e)
+	i. λx.x + 2x
+	ii. λxy.y – x + x y
+	iii.λxyz.z – (x + y)
+	
+f)
+	i. 
+		=> parameters: none
+		=> free variables: s , t
+	ii.
+		=> parameters: u, v
+		=> free variables: x, a, b
+	iii.
+		=> parameters: s, t
+		=> free variables: ignoreCase 
+		
+g) full code in this package prob1 -> MyClass.java file
+
+h) 
+	i. x -> System.out.prinln(x)
+	ii. this is the object::instanceMethod type, 
+		since "System.out" is an object and "println" is an instance method of Prinstream class
+		
+j) 
+	i. x -> Math.random(x)
+	ii. 
+	public static void main(String[] args) {
+		Supplier<Double> ss = Math::random;
+		System.out.println(ss.get());
+	} 
+	iii.
+	full code in this package prob1 -> MyClass2.java
+	
+		
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
