@@ -1,4 +1,4 @@
-package lesson8.labs.prob6.part1;
+package lesson8.labs.prob6.part1andpart2;
 
 import java.util.Comparator;
 import java.util.function.BiConsumer;
@@ -11,10 +11,10 @@ public class Solutions {
 		// TODO Auto-generated method stub
 
 		
-		evaluator();
+		evaluator(); // Method to test All on part B of this problem
 		
 
-		// G. EmployeeNameComparator comp = new EmployeeNameComp
+		
 	}
 	public static  void evaluator()
 	{

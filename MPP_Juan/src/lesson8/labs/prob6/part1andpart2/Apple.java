@@ -1,4 +1,4 @@
-package lesson8.labs.prob6.part1;
+package lesson8.labs.prob6.part1andpart2;
 
 public class Apple {
 	double Weight;
