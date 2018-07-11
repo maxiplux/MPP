@@ -1,0 +1,8 @@
+If two Employee objects have the same name,what is the return value of compare? 
+0
+Give an example of two Employee objects having the same name but
+that should not be considered equal
+For example:
+Employee e1 = new Employee("Daniel", 50000);
+Employee e2 = new Employee("Daniel", 90000);
+the 2 employee are not equals
