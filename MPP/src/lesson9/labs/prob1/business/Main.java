@@ -23,7 +23,11 @@ public class Main {
 		List<LibraryMember> mems = new ArrayList<>();
 		mems.addAll(members);
 		//implement
-		return mems.stream().filter(e -> e.getMemberId().contains("3")).map( LibraryMember::getMemberId).collect(Collectors.toList());
+		return mems
+				.stream()
+				.filter(x -> x.getAddress().getZip().contains("3"))
+				.map(LibraryMember::getMemberId)
+				.collect(Collectors.toList());
 		
 	}
 	//Returns a list of all isbns of books having at least two copies
@@ -33,7 +37,11 @@ public class Main {
 			List<Book> bs = new ArrayList<>();
 			bs.addAll(books);
 			//implement
-			return bs.stream().filter(e-> e.getNumCopies()>1).map(Book::getIsbn).collect(Collectors.toList());
+			return bs
+					.stream()
+					.filter(x -> x.getCopies().length >= 2)
+					.map(Book::getIsbn)
+					.collect(Collectors.toList());
 			
 		}
 	
@@ -44,7 +52,11 @@ public class Main {
 		List<Book> bs = new ArrayList<>();
 		bs.addAll(books);
 		//implement
-		return bs.stream().filter(e -> e.getAuthors().size()>1).map(Book::getIsbn).collect(Collectors.toList());
+		return bs
+				.stream()
+				.filter(x -> x.getAuthors().size() > 1 )
+				.map(Book::getIsbn)
+				.collect(Collectors.toList());
 		
 		}
 
