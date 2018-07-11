@@ -31,9 +31,9 @@ public class Solution {
 	
 	public static int nextPrime (int n)
 	{
-		n++;
-		while(!isPrime(n))
-			n++;
-		return n;
+		int next = n+1;
+		if(isPrime(next))
+			return next;
+		return nextPrime(next);
 	}
 }

@@ -1,11 +1,13 @@
 package lesson9.labs.prob1.business;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import lesson9.labs.prob1.dataaccess.DataAccess;
 import lesson9.labs.prob1.dataaccess.DataAccessFacade;
-import lesson9.labs.prob1.business.Book;
-import lesson9.labs.prob1.business.LibraryMember;
 
 public class Main {
 
@@ -21,8 +23,13 @@ public class Main {
 		Collection<LibraryMember> members = da.readMemberMap().values();
 		List<LibraryMember> mems = new ArrayList<>();
 		mems.addAll(members);
+		
 		//implement
-		return null;
+		return mems
+				.stream()
+				.filter(x -> x.getAddress().getZip().contains("3"))
+				.map(LibraryMember::getMemberId)
+				.collect(Collectors.toList());
 		
 	}
 	//Returns a list of all isbns of books having at least two copies
@@ -32,8 +39,11 @@ public class Main {
 			List<Book> bs = new ArrayList<>();
 			bs.addAll(books);
 			//implement
-			return null;
-			
+			return bs
+					.stream()
+					.filter(x -> x.getCopies().length >= 2)
+					.map(Book::getIsbn)
+					.collect(Collectors.toList());
 		}
 	
 	//Returns a list of all isbns of  Books that have multiple authors
@@ -43,7 +53,11 @@ public class Main {
 		List<Book> bs = new ArrayList<>();
 		bs.addAll(books);
 		//implement
-		return null;
+		return bs
+				.stream()
+				.filter(x -> x.getAuthors().size() > 1 )
+				.map(Book::getIsbn)
+				.collect(Collectors.toList());
 		
 		}
 
