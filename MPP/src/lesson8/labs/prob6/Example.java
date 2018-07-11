@@ -11,7 +11,7 @@ public class Example {
 	
 	Function<Employee,String> getName1= (Employee e) -> e.getName();
 	Function<Employee,String> getName2 = Employee::getName;
-	//Method reference type:object::instanceMethod 
+	//Method reference type:Class::instanceMethod 
 	
 	//(Employee e,String s) -> e.setName(s) ;
 	BiConsumer<Employee,String> set1= ( e, s) -> e.setName(s);
@@ -33,7 +33,7 @@ public class Example {
 	//E.	(Apple a) -> a.getWeight() 
 	Function<Apple,Double> getW1 =  a -> a.getWeight();
 	Function<Apple,Double> getW2 = Apple::getWeight;
-	//Method reference type:obect::instanceMethod 
+	//Method reference type:Class::instanceMethod 
 	
 	//F.	(String x) -> Integer.parseInt(x); 
 	Function<String,Integer> pInt1 = x -> Integer.parseInt(x);
