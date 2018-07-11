@@ -1,4 +1,4 @@
-package lesson9.labs.prob4.A;
+package lesson9.labs.prob4.partA;
 
 import java.math.BigInteger;
 import java.util.function.Consumer;
