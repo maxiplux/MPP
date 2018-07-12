@@ -1,7 +1,7 @@
 package lesson10.labs.prob7;
 
-import java.util.*;
-import java.util.function.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -12,9 +12,9 @@ public class Main {
 		// expected output: [0, -1, -2, -3, -4, 4, -5, 5]
 		ordering1(intList);
 
-		 List<String> stringList = Arrays.asList("cba", "efg", "doe", "fie", "set");
+		List<String> stringList = Arrays.asList("cba", "efg", "doe", "fie", "set");
 		// expected output: [cba, fie, doe, efg, set]
-		 ordering2(stringList);
+		ordering2(stringList);
 
 	}
 

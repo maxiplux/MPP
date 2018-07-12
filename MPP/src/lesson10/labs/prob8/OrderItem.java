@@ -6,24 +6,29 @@ public class OrderItem {
 	private Product product;
 	private int quantityRequested;
 	private double totalPrice;
-	//package level constructor
+
+	// package level constructor
 	OrderItem(Product product, int quantity) {
 		this.product = product;
 		this.quantityRequested = quantity;
 		totalPrice = product.getUnitPrice() * quantity;
 	}
+
 	@Override
 	public String toString() {
 		return "   " + product.getProductId() + ": " + quantityRequested + ", " + product.getUnitPrice();
 	}
-	public  Optional<Product> getProduct() {		
-		return  Optional.of(this.product);
+
+	public Optional<Product> getProduct() {
+		return Optional.of(this.product);
 	}
+
 	public int getQuantityRequested() {
 		return quantityRequested;
 	}
+
 	public double getTotalPrice() {
 		return totalPrice;
 	}
-	
+
 }
