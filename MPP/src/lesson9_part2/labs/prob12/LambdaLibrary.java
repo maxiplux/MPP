@@ -1,4 +1,4 @@
-package lesson10.labs.prob12;
+package lesson9_part2.labs.prob12;
 
 import java.util.List;
 import java.util.stream.Collectors;
