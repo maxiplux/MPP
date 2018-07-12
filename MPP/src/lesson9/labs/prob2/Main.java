@@ -15,6 +15,8 @@ public class Main {
 	private void showAllOrderItems() {
 		System.out.println("\n==============\nAll order items:");
 		//implement
+		orders.stream().flatMap(s -> s.getOrderItems().stream()).collect(Collectors.toList()).forEach(System.out::println);;
+		
 	}
 	
 	private void displayAllOrders() {
