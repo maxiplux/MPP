@@ -1,7 +1,8 @@
 package lesson10.labs.prob11b;
 
-import java.util.*;
-
+import java.util.Arrays;
+import java.util.List;
+import lesson10.labs.prob11a.Employee;
 
 public class Main {
 
@@ -15,8 +16,8 @@ public class Main {
 		                  new Employee("Thomas", "Blake", 111000),
 		                  new Employee("Alice", "Richards", 101000),
 		                  new Employee("Donald", "Trump", 100000));
-		
-		
+		List<String> resultList =LambdaLibrary.CUSTOM_EMPLOYEE_LIST.apply(list,100_000, 'M'); 
+		System.out.println(resultList);
 	}
 
 }
