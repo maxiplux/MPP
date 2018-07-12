@@ -1,5 +1,7 @@
 package lesson10.labs.prob8;
 
+import java.util.Optional;
+
 public class OrderItem {
 	private Product product;
 	private int quantityRequested;
@@ -14,8 +16,8 @@ public class OrderItem {
 	public String toString() {
 		return "   " + product.getProductId() + ": " + quantityRequested + ", " + product.getUnitPrice();
 	}
-	public Product getProduct() {
-		return product;
+	public  Optional<Product> getProduct() {		
+		return  Optional.of(this.product);
 	}
 	public int getQuantityRequested() {
 		return quantityRequested;
