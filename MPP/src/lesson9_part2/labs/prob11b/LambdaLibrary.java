@@ -1,8 +1,9 @@
-package lesson10.labs.prob11b;
+package lesson9_part2.labs.prob11b;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import lesson10.labs.prob11a.Employee;
+
+import lesson9_part2.labs.prob11a.Employee;
 
 public class LambdaLibrary {
 	public static final

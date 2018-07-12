@@ -1,4 +1,4 @@
-package lesson10.labs.prob11a;
+package lesson9_part2.labs.prob11a;
 
 import java.util.*;
 import java.util.stream.Collectors;

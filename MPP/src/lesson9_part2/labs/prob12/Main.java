@@ -1,8 +1,7 @@
-package lesson10.labs.prob11b;
+package lesson9_part2.labs.prob12;
 
 import java.util.Arrays;
 import java.util.List;
-import lesson10.labs.prob11a.Employee;
 
 public class Main {
 
@@ -16,8 +15,17 @@ public class Main {
 		                  new Employee("Thomas", "Blake", 111000),
 		                  new Employee("Alice", "Richards", 101000),
 		                  new Employee("Donald", "Trump", 100000));
-		List<String> resultList =LambdaLibrary.CUSTOM_EMPLOYEE_LIST.apply(list,100_000, 'M'); 
-		System.out.println(resultList);
+		
+		//print the number of Employees in list whose salary > 100000 and whose last name begins
+		//with a letter that comes after the letter 'E'
+		System.out.println("Query 1:");
+		System.out.println(LambdaLibrary.QUERY_1.apply(list, 100000, 'E'));
+		System.out.println("---------");
+		
+		//print a list of sorted full names - all upper case -- of Employees with
+		//salary > 85000 and whose first name begins with a letter that comes before  the letter 'R'
+		System.out.println("Query 1:");
+		System.out.println(LambdaLibrary.QUERY_2.apply(list, 85000, 'R'));
 	}
 
 }
