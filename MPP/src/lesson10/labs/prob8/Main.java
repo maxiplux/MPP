@@ -1,6 +1,8 @@
 package lesson10.labs.prob8;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Main {
 	List<OrderItem> orderItems = new ArrayList<>();
@@ -12,19 +14,28 @@ public class Main {
 	}
 	
 	private boolean findProduct(String prodName) {
-		for(OrderItem item : orderItems) {
-			if(item != null) {
-				Product p=item.getProduct();
-				if(p != null) {
-					String name = p.getProductName();
-					if(name != null) {
-						if(name.equals(prodName)) return true;
-					}
-				}
-			}
-		}
-		return false;
+		
+//		this.orderItems.stream().map((x) -> Optional.of(x)).flatMap((x) -> x.getProduct)
+		
+		 //this.orderItems.stream().filter(i -> i != null).filter(item -> item.getProduct().flatMap((x) -> x.getProductName() ).orElse("").equals(prodName)).findAny().isPresent();
+		 
+		 return this.orderItems.stream().anyMatch(item -> item != null &&  item.getProduct().flatMap((x) -> x.getProductName() ).orElse("").equals(prodName));
 	}
+		
+//		for(OrderItem item : orderItems) 
+//		{
+//			if(item != null) 
+//			{
+//				 if (item.getProduct().flatMap((x) -> x.getProductName() ).orElse("").equals(prodName))
+//				 {
+//					 return true;
+//				 }
+//				
+//				
+//			}
+//		}
+//		return false;
+//	}
 	
 	private void loadOrderItemData() {
 		orderItems.add(new OrderItem(new Product("1016", "Tools", 131.00), 3));
