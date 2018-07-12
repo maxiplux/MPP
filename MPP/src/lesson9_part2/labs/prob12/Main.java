@@ -24,7 +24,7 @@ public class Main {
 		
 		//print a list of sorted full names - all upper case -- of Employees with
 		//salary > 85000 and whose first name begins with a letter that comes before  the letter 'R'
-		System.out.println("Query 1:");
+		System.out.println("Query 2:");
 		System.out.println(LambdaLibrary.QUERY_2.apply(list, 85000, 'R'));
 	}
 
