@@ -1,4 +1,4 @@
-package lesson10.labs.prob11a;
+package lesson9_part2.labs.prob11a;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -18,13 +18,17 @@ public class Main {
 		                  new Employee("Alice", "Richards", 101000),
 		                  new Employee("Donald", "Trump", 100000));
 		
-		  System.out.println(/*implement */);
-				               
-		  
+		  System.out.println(emps
+					.stream()
+					.filter(x -> x.getSalary() > 100_000)
+					.filter(x -> x.getLastName().charAt(0) > 'M')
+					.map(Employee::fullName)
+					.sorted()
+//					.reduce((x,y) -> x + ", " +y)
+//					.orElse("")
+					.collect(Collectors.joining(", "))
+				);
 
 	}
-	
-	
-	
 
 }

@@ -1,4 +1,4 @@
-package lesson10.labs.prob14;
+package lesson9_part2.labs.prob14;
 
 import java.util.Optional;
 import java.util.function.Supplier;

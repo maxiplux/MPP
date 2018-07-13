@@ -1,4 +1,4 @@
-package lesson10.labs.prob9;
+package lesson9_part2.labs.prob9;
 
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;

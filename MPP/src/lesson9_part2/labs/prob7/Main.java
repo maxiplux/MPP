@@ -1,4 +1,4 @@
-package lesson10.labs.prob7;
+package lesson9_part2.labs.prob7;
 
 import java.util.*;
 import java.util.function.*;

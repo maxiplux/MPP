@@ -1,10 +1,11 @@
-package lesson10.labs.prob11b;
+package lesson9_part2.labs.prob11a;
+
+
 
 public class Employee {
 	String firstName, lastName;
-	
-
 	int salary;
+	
 	public Employee(String f, String l, int s) {
 		this.firstName = f;
 		this.lastName = l;
@@ -22,6 +23,9 @@ public class Employee {
 		sb.append("" + salary+">");
 		return sb.toString();
 		
+	}
+	public static String fullName(Employee e) {
+		return e.getFirstName() + " " + e.getLastName();
 	}
 
 	public String getFirstName() {
