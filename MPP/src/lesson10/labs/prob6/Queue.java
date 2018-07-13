@@ -11,6 +11,7 @@ public class Queue {
 		Node next;
 
 	}
+
 	private Node head;
 	private Node tail;
 
@@ -63,17 +64,24 @@ public class Queue {
 	public static void multipleThreadNotSafe(Queue q) {
 
 		Runnable r = () -> {
-			for (int i = 0; i <= 100; i++)
-				q.add(i);
+			for (int i = 0; i < 100; i++) {
+				try {
+					q.add(i);
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+					}
+				}catch(Exception e) {
+					System.out.printf("WE have an exception on on handle the (problem of the diner philosophers)  \n ",e.getMessage());
+				}
+			}
 		};
 
-		for (int i = 0; i <= 100; i++)
+		for (int i = 0; i < 100; i++)
 			new Thread(r).start();
-		try {
-			Thread.sleep(10);
-		} catch(InterruptedException e) {}
+
 	}
-	
+
 	public static void multipleThreadSafe(Queue q) {
 
 		Runnable r = () -> {
@@ -83,26 +91,32 @@ public class Queue {
 
 		for (int i = 0; i < 100; i++)
 			new Thread(r).start();
-		try {
-			Thread.sleep(10);
-		} catch(InterruptedException e) {}
+				
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Not Thread Safe");
 		Queue q1 = new Queue();
 		multipleThreadNotSafe(q1);
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+		}
 		System.out.println(q1.getSize());
 
 		// -> the number of element is different every time we run multithread add
-		// -> the number of adds may be fewer or more than 
+		// -> the number of adds may be fewer or more than
 		// we expected when using multithread
 		// to add new nodes to queue
-		
-		//THREAD SAFE
+
+		// THREAD SAFE
 		System.out.println("Thread Safe");
 		Queue q2 = new Queue();
 		multipleThreadSafe(q2);
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+		}
 		System.out.println(q2.getSize());
 	}
 }
