@@ -22,4 +22,8 @@ public class Book {
 		BookCopy copy = new BookCopy(this, copies.size() + 1, true);
 		copies.add(copy);
 	}
+	
+	public boolean isAvailable() {
+		return copies.stream().filter(x -> x.isAvailable()).findAny().isPresent();
+	}
 }
