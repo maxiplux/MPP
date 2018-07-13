@@ -6,6 +6,7 @@ import java.util.List;
 import lesson10.labs.prob1.bugreporter.BugReport;
 
 @BugReport(assignedTo="Joe Smith", severity=1, reportedBy="Corazza", description="Should use Logger")
+
 public class DataMiner {
 	List<ClosedCurve> objects = new ArrayList<>();
 	public static void main(String[] args) {
@@ -18,7 +19,10 @@ public class DataMiner {
 	
 	//OO (good) way of performing computation
 	public double computeAveragePerimeter() {
-		if(objects == null || objects.isEmpty()) return 0.0;
+		if(objects == null || objects.isEmpty()) 
+		{
+			return 0.0;
+		}
 		double sum = 0.0;
 		for(int i = 0; i < objects.size(); ++i) {
 			sum += objects.get(i).computePerimeter();
