@@ -1,8 +1,11 @@
 package lesson10.labs.prob1.bugreporter;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,14 +104,26 @@ public class BugReportGenerator {
 	public void SaveReport(String content) {
 
 		PrintWriter pw;
-		try {
-			
+		try { 
 			pw = new PrintWriter(new FileOutputStream(this.REPORT_NAME), true);
 			pw.println(content);
 			pw.close();
 		} catch (FileNotFoundException e) {
 			LOG.warning("IOException thrown when reading file: " + e.getMessage());
 		}
+		
+//This way is more easy to do this point , but the requeriments said that is necesary work using PrintWriter 
+//		try (BufferedWriter buf =  new BufferedWriter( new FileWriter( new File(filename) ) ) ) 
+//		{
+//			
+//			buf.write(text);
+//			
+//			
+//		}
+//		catch(IOException e) {
+//			LOG.warning("IOException thrown when reading file: " + e.getMessage());
+//		}
+	 
 
 	}
 
