@@ -1,0 +1,21 @@
+Tom Jones 
+	reportedBy:Corazza
+	ClassName:lesson10.labs.prob1.javapackage.Circle
+	description:computePerimeter incorrect
+	severity:1
+	reportedBy:Corazza
+	ClassName:lesson10.labs.prob1.javapackage.ClosedCurve
+	description:The Complexity is N and the original requeriments said Nlogn
+	severity:1
+
+Joe Smith 
+	reportedBy:Corazza
+	ClassName:lesson10.labs.prob1.javapackage.DataMiner
+	description:Should use Logger
+	severity:1
+	reportedBy:Corazza
+	ClassName:lesson10.labs.prob1.javapackage.Rectangle
+	description:computePerimeter incorrect
+	severity:2
+
+
