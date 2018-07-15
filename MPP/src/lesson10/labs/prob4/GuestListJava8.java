@@ -1,7 +1,10 @@
 package lesson10.labs.prob4;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GuestListJava8 {
 	 
@@ -21,15 +24,28 @@ public class GuestListJava8 {
 		gl.printListOfExpectedFemaleGuests(invited);
 		
 	}
-	private boolean checkLegal(Guest g) throws IllegalGuestException {
-		boolean isIllegal = (g.getStatus() == Status.ILLEGAL);
-		if(isIllegal) throw new IllegalGuestException(String.format(
+	private boolean checkLegal(Guest g) {
+		try {
+			boolean isIllegal = (g.getStatus() == Status.ILLEGAL);
+			if(isIllegal) throw new IllegalGuestException(String.format(
 					"Illegal guest %s has attempted entry to the event", g.getName()));
-		else return true;
+			return  true;
+		} catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+//		boolean isIllegal = (g.getStatus() == Status.ILLEGAL);
+//		if(isIllegal) throw new IllegalGuestException(String.format(
+//					"Illegal guest %s has attempted entry to the event", g.getName()));
+//		else return true;
 	}
 	
 	public void printListOfExpectedFemaleGuests(List<Guest> invited) {
 		//implement
+		
+		String s=invited.stream().filter(g ->checkLegal(g)).filter(x -> x.getGender().equals(Gender.F)&&x.isPlanningToCome()).
+		map(Guest::getName).sorted().collect(Collectors.joining(","));
+		System.out.println(s);
+		
 	}
 	
 	
