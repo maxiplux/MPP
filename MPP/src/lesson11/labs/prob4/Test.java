@@ -19,7 +19,7 @@ public class Test {
 		objs.add("two");
 		List<? super Integer> ints = objs;
 		ints.add(3);
-		double dbl = sum(ints);
+//		double dbl = sum(ints);
 	}
 
 	public static double sum(Collection<? extends Number> nums) {
