@@ -1,6 +1,8 @@
 package lesson11.labs.prob6;
 
 public class Employee extends Person {
+	
+	
 	int id;
 	int salary;
 	
@@ -38,7 +40,7 @@ public class Employee extends Person {
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	
+	 
 	
 }
 
