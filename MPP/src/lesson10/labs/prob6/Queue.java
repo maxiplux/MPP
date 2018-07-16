@@ -99,11 +99,11 @@ public class Queue {
 		} catch (InterruptedException e) {
 		}
 		System.out.println(q1.getSize());
-
+		// The problem with this:
 		// -> the number of element is different every time we run multithread add
 		// -> the number of adds may be fewer or more than we expected when using multithread to add new nodes to queue
 
-		// THREAD SAFE
+		//Solution: THREAD SAFE
 		System.out.println("Thread Safe");
 		Queue q2 = new Queue();
 		multipleThreadSafe(q2);
