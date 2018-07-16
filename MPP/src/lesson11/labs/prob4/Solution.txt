@@ -1,0 +1,25 @@
+a)
+List<Integer> ints = new ArrayList<>();
+ints.add(1);
+ints.add(2);
+List<? extends Number> nums = ints;
+double dbl = sum(nums);
+nums.add(3.14)
+
+*Answer: There will be a compile error on 6th line "nums.add(3.14"
+Since we can assign ints to nums, but the generic of nums is
+the "? extends" wildcard, so we can not add new element to it (line 6th)
+ 
+
+b)
+List<Object> objs = new ArrayList<>();
+objs.add(1);
+objs.add("two");
+List<? super Integer> ints = objs;
+ints.add(3);
+double dbl = sum(ints);
+
+*Answer:
+There will be a compile on the 6th line "double dbl = sum(ints);"
+since the ints list is "? super Integer", we can add new elements to it,
+but the sum method take the "? extends Number" wildcard as parameter.
