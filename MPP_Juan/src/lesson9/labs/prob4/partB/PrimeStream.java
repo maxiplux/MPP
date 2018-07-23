@@ -21,6 +21,8 @@ public class PrimeStream {
 		.collect(Collectors.toList())
 		.forEach(System.out::println);
 		
+		 
+		
 	}
 
 }
